@@ -11,7 +11,7 @@ import { Store } from '@ngxs/store';
 
 import { IRegisterRequest, Roles } from '../../../models/auth.models';
 import { UserSelectors } from '../../../../../store/user-state/user.selector';
-import { RegisterUser } from '../../../../../store/auth-state/auth.actions';
+import { RegisterUser } from '../../../../../store/user-state/user.actions';
 
 const passwordsMatch: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
   const password = group.get('password')?.value;
