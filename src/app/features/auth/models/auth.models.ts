@@ -5,7 +5,7 @@ export interface ITokenResponse {
 
 export enum Roles {
   User = 0,
-  Organizator = 2,
+  Organizator = 1,
 }
 
 export interface IRegisterRequest {
@@ -42,4 +42,16 @@ export interface ISendPasswordResetRequest {
 export interface IChangePasswordRequest {
   email: string;
   newPassword: string;
+}
+
+
+export interface IUpdateRequest {
+ age?: number;
+  userName: string;
+  phoneNumber?: string;
+  city?: string;
+}
+
+export interface IDeleteRequest {
+  userid: string;
 }

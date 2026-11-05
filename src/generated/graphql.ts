@@ -33,7 +33,6 @@ export type EmailSortInput = {
   value?: InputMaybe<SortEnumType>;
 };
 
-
 export type EmailVerificationSortInput = {
   attempts?: InputMaybe<SortEnumType>;
   code?: InputMaybe<SortEnumType>;
@@ -55,6 +54,7 @@ export type Favorite = {
   user: User;
   userId: Scalars['Int']['output'];
 };
+
 
 
 export type PasswordVerificationSortInput = {
@@ -80,6 +80,8 @@ export type Procedure = {
   salonId: Scalars['Int']['output'];
   updatedAt: Scalars['DateTime']['output'];
 };
+
+
 
 export type Query = {
   __typename?: 'Query';
@@ -109,6 +111,8 @@ export type Review = {
   updatedAt: Scalars['DateTime']['output'];
 };
 
+
+
 export type Salon = {
   __typename?: 'Salon';
   AverageRating?: Maybe<Scalars['Float']['output']>;
@@ -136,6 +140,7 @@ export type Salon = {
 };
 
 
+
 export type SalonSortInput = {
   createdAt?: InputMaybe<SortEnumType>;
   description?: InputMaybe<SortEnumType>;
@@ -161,6 +166,7 @@ export type SortEnumType =
 export type User = {
   __typename?: 'User';
   age: Scalars['Int']['output'];
+  city?: Maybe<Scalars['String']['output']>;
   createdAt: Scalars['DateTime']['output'];
   email: Scalars['String']['output'];
   favoritedSalons: Array<Scalars['Int']['output']>;
@@ -178,6 +184,7 @@ export type User = {
 
 export type UserSortInput = {
   age?: InputMaybe<SortEnumType>;
+  city?: InputMaybe<SortEnumType>;
   createdAt?: InputMaybe<SortEnumType>;
   email?: InputMaybe<EmailSortInput>;
   emailVerification?: InputMaybe<EmailVerificationSortInput>;
@@ -446,6 +453,7 @@ export type StringOperationFilterInput = {
 export type UserFilterInput = {
   age?: IntOperationFilterInput | null | undefined;
   and?: Array<UserFilterInput> | null | undefined;
+  city?: StringOperationFilterInput | null | undefined;
   createdAt?: DateTimeOperationFilterInput | null | undefined;
   email?: EmailFilterInput | null | undefined;
   emailVerification?: EmailVerificationFilterInput | null | undefined;
@@ -468,7 +476,7 @@ export type UserFilterInput = {
 export type GetUserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetUserQuery = { me: Array<{ id: number, userName: string, email: string, role: Roles, phoneNumber: string | null, createdAt: string, updatedAt: string, favorites: Array<{ id: number, userId: number, salonId: number, salon: { id: number, englishName: string, georgianName: string, pictures: Array<string>, location: string } }>, salons: Array<{ id: number, englishName: string, georgianName: string, isFavoritedByCurrentUser: boolean | null, pictures: Array<string> }>, reviews: Array<{ id: number, star: Star, createdAt: string, comment: string | null }> }> };
+export type GetUserQuery = { me: Array<{ id: number, userName: string, email: string, role: Roles, phoneNumber: string | null, createdAt: string, updatedAt: string, city: string | null, age: number, favorites: Array<{ id: number, userId: number, salonId: number, salon: { id: number, englishName: string, georgianName: string, pictures: Array<string>, location: string } }>, salons: Array<{ id: number, englishName: string, georgianName: string, isFavoritedByCurrentUser: boolean | null, pictures: Array<string> }>, reviews: Array<{ id: number, star: Star, createdAt: string, comment: string | null }> }> };
 
 export type GetSalonByIdQueryVariables = Exact<{
   id: number;
@@ -499,6 +507,8 @@ export const GetUserDocument = gql`
     phoneNumber
     createdAt
     updatedAt
+    city
+    age
     favorites {
       id
       userId

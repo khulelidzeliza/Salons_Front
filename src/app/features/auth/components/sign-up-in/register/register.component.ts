@@ -1,10 +1,23 @@
-import { Component, computed, inject, output } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, inject, output } from '@angular/core';
+import {
+  AbstractControl,
+  FormBuilder,
+  ReactiveFormsModule,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { Store } from '@ngxs/store';
 
 import { IRegisterRequest, Roles } from '../../../models/auth.models';
 import { UserSelectors } from '../../../../../store/user-state/user.selector';
-import { RegisterUser } from '../../../../../store/user-state/user.actions';
+import { RegisterUser } from '../../../../../store/auth-state/auth.actions';
+
+const passwordsMatch: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
+  const password = group.get('password')?.value;
+  const confirm = group.get('confirmPassword')?.value;
+  return password && confirm && password !== confirm ? { passwordMismatch: true } : null;
+};
 
 @Component({
   selector: 'app-register',
@@ -22,18 +35,28 @@ export default class RegisterComponent {
   private readonly store = inject(Store);
 
   readonly loading = this.store.selectSignal(UserSelectors.isLoading);
-  readonly form = this.fb.group({
-    userName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-    email: ['', [Validators.required, Validators.email, Validators.minLength(2), Validators.maxLength(500)]],
-    phoneNumber: [''],
-    password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]],
-    role: [Roles.User, [Validators.required]],
-    agree: [false, [Validators.requiredTrue]],
-  });
+
+  readonly form = this.fb.group(
+    {
+      userName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(500)]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]],
+      confirmPassword: ['', [Validators.required]],
+      role: [Roles.User, [Validators.required]],
+      agree: [false, [Validators.requiredTrue]],
+    },
+    { validators: passwordsMatch }
+  );
 
   isInvalid(control: string): boolean {
     const c = this.form.get(control);
     return !!c && c.invalid && (c.touched || c.dirty);
+  }
+
+  isConfirmInvalid(): boolean {
+    const c = this.form.get('confirmPassword');
+    if (!c || !(c.touched || c.dirty)) return false;
+    return c.invalid || this.form.hasError('passwordMismatch');
   }
 
   onSubmit(): void {
@@ -47,7 +70,6 @@ export default class RegisterComponent {
       userName: v.userName!,
       email: v.email!,
       password: v.password!,
-      phoneNumber: v.phoneNumber?.trim() || undefined,
       role: v.role!,
     };
 

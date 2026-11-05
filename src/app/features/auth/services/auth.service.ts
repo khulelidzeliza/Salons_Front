@@ -31,9 +31,6 @@ export class AuthService {
     return this.http.post<Result<boolean>>(`${this.base}/send-password-reset` , body);
   }
 
-  public changePassword(body: IChangePasswordRequest, token: string): Observable<Result<boolean>> {
-    return this.http.post<Result<boolean>>(`${this.base}/change-password` , body, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-  }
+
+
 }

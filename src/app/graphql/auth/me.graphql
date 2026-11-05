@@ -8,6 +8,8 @@ query GetUser {
     phoneNumber
     createdAt
     updatedAt
+    city,
+    age
     favorites {
       id
       userId

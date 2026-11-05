@@ -2,7 +2,7 @@ import { Component, computed, effect, inject, signal } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { DatePipe } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { LucideAngularModule, User, Mail, Phone, MapPin, Calendar, Shield } from 'lucide-angular';
+import { LucideAngularModule, User, Mail, Phone, MapPin, Calendar, Shield, Cake } from 'lucide-angular';
 import { UserSelectors } from '../../../store/user-state/user.selector';
 
 
@@ -26,6 +26,7 @@ export default class UserDetailsComponent {
   readonly MapPinIcon = MapPin;
   readonly CalendarIcon = Calendar;
   readonly ShieldIcon = Shield;
+  readonly CakeIcon = Cake;
 
   readonly completion = computed(() => {
     const u = this.user();
@@ -37,7 +38,8 @@ export default class UserDetailsComponent {
 
   readonly form = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, Validators.email]],  
+    age: [null as number | null, [Validators.min(1), Validators.max(120)]],
     phoneNumber: [''],
     city: [''],
   });
@@ -70,7 +72,7 @@ export default class UserDetailsComponent {
   cancel(): void {
     this.editing.set(false);
     const u = this.user();
-    this.form.reset({ name: u?.userName ?? '', email: u?.email ?? '', phoneNumber: u?.phoneNumber ?? '' });
+    this.form.reset({ name: u?.userName ?? '', email: u?.email ?? '', phoneNumber: u?.phoneNumber ?? '' ,age: u?.age ?? null, city: u?.city ?? ''}, { emitEvent: false });
   }
 
   save(): void {

@@ -47,7 +47,20 @@
           }
         </div>
       </div>
-
+<!-- Age -->
+<div class="field">
+  <div class="field__icon"><lucide-icon [img]="CakeIcon" [size]="18"></lucide-icon></div>
+  <div class="field__body">
+    <label class="field__label" for="age">Age</label>
+    @if (!editing() && !user()?.age) {
+    <p class="field__static field__static--empty">Not added yet</p>
+    } @else {
+    <input id="age" type="number" inputmode="numeric" min="1" max="120" class="field__input"
+      formControlName="age" [class.is-invalid]="isInvalid('age')" />
+    @if (isInvalid('age')) { <span class="field__error">Enter an age between 1 and 120.</span> }
+    }
+  </div>
+</div>
       <!-- City -->
       <div class="field">
         <div class="field__icon"><lucide-icon [img]="MapPinIcon" [size]="18"></lucide-icon></div>

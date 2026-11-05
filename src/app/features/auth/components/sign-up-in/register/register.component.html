@@ -31,19 +31,7 @@
     }
   </div>
 
-  <div class="field">
-    <label class="field__label" for="reg-phone">
-      Phone <span>&mdash; for booking reminders (optional)</span>
-    </label>
-    <input
-      id="reg-phone"
-      type="tel"
-      class="field__input"
-      placeholder="+1 (555) 000 0000"
-      formControlName="phoneNumber"
-      autocomplete="tel"
-    />
-  </div>
+
 
   <div class="field">
     <label class="field__label" for="reg-password">Choose a password</label>
@@ -60,6 +48,23 @@
       <span class="field__error">Use at least 8 characters.</span>
     }
   </div>
+<div class="field">
+  <label class="field__label" for="reg-password-confirm">Repeat password</label>
+  <input
+    id="reg-password-confirm"
+    type="password"
+    class="field__input"
+    placeholder="••••••••"
+    formControlName="confirmPassword"
+    [class.is-invalid]="isConfirmInvalid()"
+    autocomplete="new-password"
+  />
+  @if (isConfirmInvalid()) {
+    <span class="field__error">
+      {{ form.hasError('passwordMismatch') ? 'Passwords do not match.' : 'Please repeat your password.' }}
+    </span>
+  }
+</div>
 
   <div class="field field--full">
     <span class="field__label">I'm here to…</span>
