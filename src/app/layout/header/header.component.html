@@ -5,7 +5,7 @@
 
     <div class="site-header__actions">
       <button type="button" class="site-header__lang" (click)="toggleLang()" [attr.aria-label]="lang() === 'ka' ? 'Switch to English' : 'ქართულზე გადართვა'">
-        {{ lang() === 'ka' ? 'EN' : 'KA' }}
+        {{ lang() === 'en' ? 'EN' : 'KA' }}
       </button>
 
       @if (!isOrganizer()) {
