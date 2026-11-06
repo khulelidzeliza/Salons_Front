@@ -25,7 +25,10 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
-    provideHttpClient(withInterceptors([apiInterceptor, errorInterceptor, authInterceptor])),
+    provideHttpClient(
+      withFetch(),
+      withInterceptors([apiInterceptor, errorInterceptor, authInterceptor])
+    ),
     graphqlProvider,
 
      provideAppInitializer(() => {
@@ -33,7 +36,6 @@ export const appConfig: ApplicationConfig = {
         const store = inject(Store);
         const token = inject(AuthTokenService);
 
-        // server has no token storage, and logged-out users have no token → skip
         if (!isPlatformBrowser(platformId)) return of(true);
         if (!token.getTokens().access_token) return of(true);
 
