@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { AbstractControl, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
 import { combineLatest } from 'rxjs';
-import { BudgetLevel } from '../../../../../generated/graphql';
-import { DeleteSalon, GetSalonById, UpdateSalon, UpdateSalonPayload } from '../../../../store/salon-state/salon-actions';
-import { SalonSelectors } from '../../../../store/salon-state/salon-selector';
-import { SalonDetail } from '../../../../store/salon-state/salon-modal';
-import { UserSelectors } from '../../../../store/user-state/user.selector';
+import { BudgetLevel } from '../../../generated/graphql';
+import { GetSalonById, UpdateSalonPayload, UpdateSalon, DeleteSalon } from '../../store/salon-state/salon-actions';
+import { SalonDetail } from '../../store/salon-state/salon-modal';
+import { SalonSelectors } from '../../store/salon-state/salon-selector';
+import { UserSelectors } from '../../store/user-state/user.selector';
 
 type BudgetOption = { value: BudgetLevel; label: string; name: string; num: number };
 

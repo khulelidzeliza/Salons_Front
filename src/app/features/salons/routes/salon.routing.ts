@@ -4,7 +4,7 @@ export const CATALOG_ROUTES: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./../catalog-page/catalog-page/catalog-page.component')
-        .then(m => m.CatalogPageComponent)
+      import('../salon-page/salon-page.component')
+      // import('../salon-page/salon-page/salon-page.component')
   }
 ];

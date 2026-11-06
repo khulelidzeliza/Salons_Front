@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ProcedurePayload } from '../../../../../store/procedure-state/procedure-model';
+import { ProcedurePayload } from '../../../store/procedure-state/procedure-model';
 
 @Injectable({ providedIn: 'root' })
 export class ProcedureService {

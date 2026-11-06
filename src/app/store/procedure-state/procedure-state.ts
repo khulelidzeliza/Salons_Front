@@ -4,8 +4,8 @@ import { forkJoin, of, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { UserSelectors } from '../user-state/user.selector';
 import { PROCEDURE_TYPES, ProcedureDraft, ProcedurePayload, ProcedureStateModel } from './procedure-model';
-import { ProcedureService } from '../../shared/components/modals/add-salon-modal/services/procedure.service';
 import { AddProcedureDraft, SetProcedureType, RemoveProcedureDraft, SetMasterDraft, AddMaster, RemoveMaster, SetFinishedWorks, SaveProcedures, ResetProcedureDrafts } from './procedure-actions';
+import { ProcedureService } from '../../features/salons/services/procedure.service';
 
 let nextDraftId = 1;
 

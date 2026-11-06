@@ -1,5 +1,5 @@
 import { CodegenConfig } from '@graphql-codegen/cli';
-process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+// process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 
 const config: CodegenConfig = {
   schema: 'https://localhost:7240/graphql/',

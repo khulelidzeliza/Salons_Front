@@ -9,7 +9,7 @@ import { withNgxsReduxDevtoolsPlugin } from '@ngxs/devtools-plugin';
 
 import { provideAnimations } from '@angular/platform-browser/animations'; // or provideAnimationsAsync
 import { catchError, of } from 'rxjs';
-import { AuthTokenService } from './core/services/auth-token.service';
+import { AuthTokenService } from './shared/services/auth-token.service';
 import { isPlatformBrowser } from '@angular/common';
 import { authInterceptor } from './core/interceptors/auth-interceptor';
 import { errorInterceptor } from './core/interceptors/error-interceptor';
@@ -25,7 +25,10 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
-    provideHttpClient(withInterceptors([apiInterceptor, errorInterceptor, authInterceptor])),
+    provideHttpClient(
+      withFetch(),
+      withInterceptors([apiInterceptor, errorInterceptor, authInterceptor])
+    ),
     graphqlProvider,
 
      provideAppInitializer(() => {
@@ -33,7 +36,6 @@ export const appConfig: ApplicationConfig = {
         const store = inject(Store);
         const token = inject(AuthTokenService);
 
-        // server has no token storage, and logged-out users have no token → skip
         if (!isPlatformBrowser(platformId)) return of(true);
         if (!token.getTokens().access_token) return of(true);
 

@@ -1,4 +1,4 @@
-import { ISoonerConfig } from "../sooner.service";
+import { ISoonerConfig } from "../../../shared/services/sooner.service";
 
 
 interface ISonnerPayload {

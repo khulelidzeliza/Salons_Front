@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { SalonPayload, UpdateSalonPayload } from '../../../../../store/salon-state/salon-actions';
-import { SalonType } from '../../../../../store/salon-state/salon-modal';
+import { SalonPayload, UpdateSalonPayload } from '../../../store/salon-state/salon-actions';
+import { SalonType } from '../../../store/salon-state/salon-modal';
 
 @Injectable({ providedIn: 'root' })
 export class SalonService {

@@ -1,0 +1,40 @@
+<section class="hero">
+  <div class="hero__media" aria-hidden="true"></div>
+
+  <div class="hero__content">
+    <h1 class="hero__title">Find your
+      <em> salon</em>
+    </h1>
+
+    <app-filter-bar
+      [resultCount]="(totalCount$ | async) ?? 0"
+      (filtersChange)="onFiltersChange($event)">
+    </app-filter-bar>
+  </div>
+</section>
+
+<section class="catalog">
+  <header class="catalog__head">
+    <h2 class="catalog__title">Trending this week</h2>
+    @if (totalCount$ | async; as count) {
+      <p class="catalog__count">{{ count }} {{ count === 1 ? 'salon' : 'salons' }}</p>
+    }
+  </header>
+
+  @if ((loading$ | async) === false) {
+    <div class="catalog__grid">
+      @for (salon of (salons$ | async) ?? []; track salon.id) {
+        <app-salon-card
+          [salon]="salon"
+          (toggleFavorite)="onToggleFavorite($event)">
+        </app-salon-card>
+      }
+    </div>
+  } @else {
+    <!-- <div class="catalog__grid">
+      @for (i of [1, 2, 3, 4, 5, 6]; track i) {
+        <div class="salon-card--skeleton"></div>
+      }
+    </div> -->
+  }
+</section>

@@ -6,7 +6,7 @@ export const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./features/catalog/routes/catalog.routing').then(m => m.CATALOG_ROUTES),
+      import('./features/salons/routes/salon.routing').then(m => m.CATALOG_ROUTES),
   },
 
   {
