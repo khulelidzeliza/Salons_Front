@@ -37,7 +37,7 @@ export class UserState {
       tap(() => {
         ctx.patchState({ loading: false, error: null });
 
-        this.sooner.success('You registered successfully. Check your email :)');
+        this.sooner.success('toast.registerSuccess');
 
         this.router.navigate(['/auth/verify-email'], {
           queryParams: { email: payload.email },
@@ -45,7 +45,7 @@ export class UserState {
       }),
       catchError((err) => {
         ctx.patchState({ loading: false, error: err });
-        this.sooner.error('Registration failed. Please try again.');
+        this.sooner.error('toast.registerFailed');
         return throwError(() => err);
       })
     );
@@ -60,10 +60,10 @@ export class UserState {
         ctx.patchState({ error: null, loading: false });
 
         if (res.accessToken.includes('Verification')) {
-          this.sooner.warning('Your email is not verified. Check your email :)');
+          this.sooner.warning('toast.emailNotVerified');
           this.router.navigateByUrl(`/auth/verification/${payload.email}`);
         } else {
-          this.sooner.success('You logged in successfully.');
+          this.sooner.success('toast.loginSuccess');
           this.token.saveTokens(res);
 
           ctx.dispatch(new FetchUser()).subscribe(() => {
@@ -77,7 +77,7 @@ export class UserState {
           error: error,
         });
 
-        this.sooner.error('Login failed. Please check your credentials.');
+        this.sooner.error('toast.loginFailed');
         return throwError(() => error);
       })
     );
@@ -91,7 +91,7 @@ export class UserState {
       tap((res) => {
         ctx.patchState({ loading: false, error: null });
 
-        this.sooner.success('Your email has been verified successfully');
+        this.sooner.success('toast.verifySuccess');
 
         this.token.saveTokens(res);
         ctx.dispatch(new FetchUser());
@@ -101,10 +101,10 @@ export class UserState {
         ctx.patchState({ loading: false, error: err });
         
         if (err.error?.detail?.includes('already verified')) {
-          this.sooner.warning('Email is already verified');
+          this.sooner.warning('toast.alreadyVerified');
           this.router.navigateByUrl('');
         } else {
-          this.sooner.error('Verification failed. Invalid or expired code.');
+          this.sooner.error('toast.verifyFailed');
         }
 
         return throwError(() => err);
@@ -136,7 +136,7 @@ export class UserState {
     });
 
     this.token.deleteTokens();
-    this.sooner.success('You logged out successfully');
+    this.sooner.success('toast.logoutSuccess');
     this.router.navigateByUrl('/');
   }
 }

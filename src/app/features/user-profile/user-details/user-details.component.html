@@ -1,13 +1,13 @@
 <section class="details">
   <header class="details__head">
     <div>
-      <p class="details__eyebrow">Account</p>
-      <h2 class="details__title">Your details</h2>
+      <p class="details__eyebrow">{{ 'profile.details.eyebrow' | translate }}</p>
+      <h2 class="details__title">{{ 'profile.details.title' | translate }}</h2>
     </div>
 
     @if (!editing()) {
     <button type="button" class="btn btn-secondary details__edit" (click)="startEdit()">
-      ✎ Edit
+      {{ 'profile.details.edit' | translate }}
     </button>
     }
   </header>
@@ -18,10 +18,10 @@
       <div class="field">
         <div class="field__icon"><lucide-icon [img]="UserIcon" [size]="18"></lucide-icon></div>
         <div class="field__body">
-          <label class="field__label" for="fullName">Full name</label>
+          <label class="field__label" for="fullName">{{ 'profile.details.fullName' | translate }}</label>
           <input id="fullName" type="text" class="field__input" formControlName="name"
             [class.is-invalid]="isInvalid('name')" />
-          @if (isInvalid('name')) { <span class="field__error">Please enter your name.</span> }
+          @if (isInvalid('name')) { <span class="field__error">{{ 'profile.details.nameError' | translate }}</span> }
         </div>
       </div>
 
@@ -29,7 +29,7 @@
       <div class="field field--readonly">
         <div class="field__icon"><lucide-icon [img]="MailIcon" [size]="18"></lucide-icon></div>
         <div class="field__body">
-          <label class="field__label" for="email">Email -<span class="field__hint"> can't be changed</span></label>
+          <label class="field__label" for="email">{{ 'profile.details.email' | translate }}<span class="field__hint"> {{ 'profile.details.emailHint' | translate }}</span></label>
           <input id="email" type="email" class="field__input" formControlName="email" readonly
             [class.is-invalid]="isInvalid('email')" />
 
@@ -39,9 +39,9 @@
       <div class="field">
         <div class="field__icon"><lucide-icon [img]="PhoneIcon" [size]="18"></lucide-icon></div>
         <div class="field__body">
-          <label class="field__label" for="phone">Phone</label>
+          <label class="field__label" for="phone">{{ 'profile.details.phone' | translate }}</label>
           @if (!editing() && !user()?.phoneNumber) {
-          <p class="field__static field__static--empty">Not added yet</p>
+          <p class="field__static field__static--empty">{{ 'common.notAddedYet' | translate }}</p>
           } @else {
           <input id="phone" type="tel" class="field__input" formControlName="phoneNumber" />
           }
@@ -51,13 +51,13 @@
 <div class="field">
   <div class="field__icon"><lucide-icon [img]="CakeIcon" [size]="18"></lucide-icon></div>
   <div class="field__body">
-    <label class="field__label" for="age">Age</label>
+    <label class="field__label" for="age">{{ 'profile.details.age' | translate }}</label>
     @if (!editing() && !user()?.age) {
-    <p class="field__static field__static--empty">Not added yet</p>
+    <p class="field__static field__static--empty">{{ 'common.notAddedYet' | translate }}</p>
     } @else {
     <input id="age" type="number" inputmode="numeric" min="1" max="120" class="field__input"
       formControlName="age" [class.is-invalid]="isInvalid('age')" />
-    @if (isInvalid('age')) { <span class="field__error">Enter an age between 1 and 120.</span> }
+    @if (isInvalid('age')) { <span class="field__error">{{ 'profile.details.ageError' | translate }}</span> }
     }
   </div>
 </div>
@@ -65,9 +65,9 @@
       <div class="field">
         <div class="field__icon"><lucide-icon [img]="MapPinIcon" [size]="18"></lucide-icon></div>
         <div class="field__body">
-          <label class="field__label" for="city">City</label>
+          <label class="field__label" for="city">{{ 'profile.details.city' | translate }}</label>
           @if (!editing() && !form.get('city')?.value) {
-          <p class="field__static field__static--empty">Not added yet</p>
+          <p class="field__static field__static--empty">{{ 'common.notAddedYet' | translate }}</p>
           } @else {
           <input id="city" type="text" class="field__input" formControlName="city" />
           }
@@ -78,7 +78,7 @@
       <div class="field">
         <div class="field__icon"><lucide-icon [img]="CalendarIcon" [size]="18"></lucide-icon></div>
         <div class="field__body">
-          <label class="field__label">Member since</label>
+          <label class="field__label">{{ 'profile.details.memberSince' | translate }}</label>
           <div class="field__static">{{ user()?.createdAt | date: 'MMMM y' }}</div>
         </div>
       </div>
@@ -87,15 +87,15 @@
       <div class="field">
         <div class="field__icon"><lucide-icon [img]="ShieldIcon" [size]="18"></lucide-icon></div>
         <div class="field__body">
-          <label class="field__label">Account type</label>
-          <div class="field__static">{{ user()?.role === 'ORGANIZATOR' ? 'Organizer' : 'Client' }}</div>
+          <label class="field__label">{{ 'profile.details.accountType' | translate }}</label>
+          <div class="field__static">{{ (user()?.role === 'ORGANIZATOR' ? 'profile.details.organizer' : 'profile.details.client') | translate }}</div>
         </div>
       </div>
 
       @if (editing()) {
       <div class="details__actions">
-        <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" (click)="cancel()">{{ 'profile.details.cancel' | translate }}</button>
+        <button type="submit" class="btn btn-primary">{{ 'profile.details.save' | translate }}</button>
       </div>
       }
     </form>

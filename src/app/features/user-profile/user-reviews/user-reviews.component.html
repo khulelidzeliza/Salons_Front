@@ -1,7 +1,7 @@
 <section class="reviews">
   <header class="reviews__head">
-    <p class="reviews__eyebrow">Feedback</p>
-    <h2 class="reviews__title">Your reviews</h2>
+    <p class="reviews__eyebrow">{{ 'profile.reviews.eyebrow' | translate }}</p>
+    <h2 class="reviews__title">{{ 'profile.reviews.title' | translate }}</h2>
   </header>
 
   @if (reviews().length) {
@@ -9,7 +9,7 @@
       @for (review of reviews(); track review.id) {
         <article class="review-card">
           <div class="review-card__top">
-            <div class="review-card__stars" [attr.aria-label]="starCount(review.star) + ' out of 5'">
+            <div class="review-card__stars" [attr.aria-label]="'profile.reviews.outOf' | translate: { n: starCount(review.star) }">
               @for (s of stars; track s) {
                 <span class="review-card__star" [class.is-filled]="s <= starCount(review.star)">★</span>
               }
@@ -29,6 +29,6 @@
       }
     </div>
   } @else {
-    <p class="reviews__empty">You haven’t written any reviews yet.</p>
+    <p class="reviews__empty">{{ 'profile.reviews.empty' | translate }}</p>
   }
 </section>

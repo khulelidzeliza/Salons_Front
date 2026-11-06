@@ -2,51 +2,51 @@
   <div class="modal-card card" (click)="$event.stopPropagation()">
     <header class="modal-head">
       <div>
-        <p class="modal-eyebrow">New listing</p>
-        <h3 class="modal-title">Add salon</h3>
+        <p class="modal-eyebrow">{{ 'addSalon.eyebrow' | translate }}</p>
+        <h3 class="modal-title">{{ 'addSalon.title' | translate }}</h3>
       </div>
-      <button type="button" class="modal-close" (click)="close()" aria-label="Close">✕</button>
+      <button type="button" class="modal-close" (click)="close()" [attr.aria-label]="'addSalon.close' | translate">✕</button>
     </header>
 
     <form class="modal-form" [formGroup]="form" (ngSubmit)="submit()">
       <div class="modal-body">
         <div class="grid">
           <div class="field">
-            <label>Name (English)</label>
+            <label>{{ 'addSalon.nameEn' | translate }}</label>
             <input class="input" type="text" formControlName="englishName" placeholder="Maison Lueur — Vake" />
             <small class="err" *ngIf="form.get('englishName')?.touched && form.get('englishName')?.invalid">
-              English name is required
+              {{ 'addSalon.nameEnError' | translate }}
             </small>
           </div>
 
           <div class="field">
-            <label>Name (Georgian)</label>
+            <label>{{ 'addSalon.nameKa' | translate }}</label>
             <input class="input" type="text" formControlName="georgianName" placeholder="მეზონ ლუერი — ვაკე" />
             <small class="err" *ngIf="form.get('georgianName')?.touched && form.get('georgianName')?.invalid">
-              Georgian name is required
+              {{ 'addSalon.nameKaError' | translate }}
             </small>
           </div>
           <div class="field">
-            <label>City / Location</label>
-            <input class="input" type="text" formControlName="location" placeholder="Tbilisi" />
+            <label>{{ 'addSalon.location' | translate }}</label>
+            <input class="input" type="text" formControlName="location" [placeholder]="'addSalon.locationPlaceholder' | translate" />
             <small class="err" *ngIf="form.get('location')?.touched && form.get('location')?.invalid">
-              Location is required
+              {{ 'addSalon.locationError' | translate }}
             </small>
           </div>
 
           <div class="field">
-            <label>Starting price</label>
+            <label>{{ 'addSalon.price' | translate }}</label>
             <div class="input-prefix">
               <span>₾</span>
               <input class="input" type="number" min="0" formControlName="price" placeholder="25" />
             </div>
             <small class="err" *ngIf="form.get('price')?.touched && form.get('price')?.invalid">
-              Enter a valid price
+              {{ 'addSalon.priceError' | translate }}
             </small>
           </div>
 
           <div class="field">
-            <label>Phone number</label>
+            <label>{{ 'addSalon.phone' | translate }}</label>
             <input class="input" type="text" formControlName="phoneNumber" placeholder="+995 ..." />
           </div>
 
@@ -59,8 +59,8 @@
           </div> -->
 
           <div class="field">
-            <label>Working hours</label>
-            <input class="input" type="text" formControlName="workingHours" placeholder="Mon–Sat 10:00–20:00" />
+            <label>{{ 'addSalon.hours' | translate }}</label>
+            <input class="input" type="text" formControlName="workingHours" [placeholder]="'addSalon.hoursPlaceholder' | translate" />
           </div>
 <!-- 
           <div class="field">
@@ -75,13 +75,13 @@
         </div>
 
         <div class="field">
-          <label>Pictures</label>
+          <label>{{ 'addSalon.pictures' | translate }}</label>
           <label class="dropzone" [class.has-files]="pictures.length">
             <input type="file" multiple accept="image/*" (change)="onFileChange($event)" />
             <span class="dropzone__icon">＋</span>
             <span class="dropzone__text">
-              <strong>{{ pictures.length ? pictures.length + ' photo(s) selected' : 'Upload salon photos' }}</strong>
-              <small>{{ pictures.length ? 'Click to choose again' : 'JPG or PNG · the first one is the cover' }}</small>
+              <strong>{{ pictures.length ? ('addSalon.photosSelected' | translate: { count: pictures.length }) : ('addSalon.upload' | translate) }}</strong>
+              <small>{{ (pictures.length ? 'addSalon.chooseAgain' : 'addSalon.uploadHint') | translate }}</small>
             </span>
           </label>
         </div>
@@ -91,53 +91,51 @@
         <section class="procedures" *ngIf="procedures$ | async as procedures">
           <div class="procedures__head">
             <div>
-              <p class="procedures__eyebrow">Services</p>
-              <h4 class="procedures__title">Procedures</h4>
+              <p class="procedures__eyebrow">{{ 'addSalon.procedures.eyebrow' | translate }}</p>
+              <h4 class="procedures__title">{{ 'addSalon.procedures.title' | translate }}</h4>
             </div>
-            <button type="button" class="procedures__add" (click)="addProcedure()">+ Add procedure</button>
+            <button type="button" class="procedures__add" (click)="addProcedure()">{{ 'addSalon.procedures.add' | translate }}</button>
           </div>
 
           <button type="button" class="procedures__empty" *ngIf="!procedures.length" (click)="addProcedure()">
-            No procedures yet — add services, masters and work photos.
+            {{ 'addSalon.procedures.empty' | translate }}
           </button>
 
           <div class="procedure" *ngFor="let p of procedures; let i = index; trackBy: trackById">
             <div class="procedure__top">
               <span class="procedure__num">{{ i + 1 }}</span>
               <button type="button" class="procedure__remove" (click)="removeProcedure(p.id)"
-                aria-label="Remove procedure">✕</button>
+                [attr.aria-label]="'addSalon.procedures.remove' | translate">✕</button>
             </div>
 
             <div class="field">
-              <label>Type</label>
+              <label>{{ 'addSalon.procedures.type' | translate }}</label>
               <div class="chips">
                 <button type="button" class="chip" *ngFor="let t of procedureTypes"
-                  [class.is-active]="p.procedureType === t.value" (click)="setType(p.id, t.value)">{{ t.label
-                  }}</button>
+                  [class.is-active]="p.procedureType === t.value" (click)="setType(p.id, t.value)">{{ t.label | translate }}</button>
               </div>
             </div>
 
             <div class="field">
-              <label>Masters</label>
+              <label>{{ 'addSalon.procedures.masters' | translate }}</label>
               <div class="masters">
                 <span class="master" *ngFor="let m of p.masters">
                   {{ m }}
-                  <button type="button" (click)="removeMaster(p.id, m)" [attr.aria-label]="'Remove ' + m">✕</button>
+                  <button type="button" (click)="removeMaster(p.id, m)" [attr.aria-label]="'addSalon.procedures.removeMaster' | translate: { name: m }">✕</button>
                 </span>
-                <input class="masters__input" type="text" placeholder="Type a name, press Enter" [value]="p.masterDraft"
+                <input class="masters__input" type="text" [placeholder]="'addSalon.procedures.masterPlaceholder' | translate" [value]="p.masterDraft"
                   (input)="onMasterInput(p.id, $event)" (keydown.enter)="addMaster(p.id, $event)"
                   (blur)="addMaster(p.id)" />
               </div>
             </div>
 
             <div class="field">
-              <label>Finished works</label>
+              <label>{{ 'addSalon.procedures.works' | translate }}</label>
               <label class="dropzone dropzone--sm" [class.has-files]="p.finishedWorks.length">
                 <input type="file" multiple accept="image/*" (change)="onWorksChange(p.id, $event)" />
                 <span class="dropzone__icon">＋</span>
                 <span class="dropzone__text">
-                  <strong>{{ p.finishedWorks.length ? p.finishedWorks.length + ' photo(s) selected' : 'Add work photos'
-                    }}</strong>
+                  <strong>{{ p.finishedWorks.length ? ('addSalon.photosSelected' | translate: { count: p.finishedWorks.length }) : ('addSalon.procedures.addWorks' | translate) }}</strong>
                 </span>
               </label>
             </div>
@@ -145,14 +143,14 @@
         </section>
 
         <p class="err" *ngIf="error$ | async">
-          Failed to create salon. Please try again.
+          {{ 'addSalon.error' | translate }}
         </p>
       </div>
 
       <footer class="actions">
-        <button type="button" class="btn btn-secondary" (click)="close()">Cancel</button>
+        <button type="button" class="btn btn-secondary" (click)="close()">{{ 'addSalon.cancel' | translate }}</button>
         <button type="submit" class="btn btn-primary" [disabled]="loading$ | async">
-          {{ (loading$ | async) ? 'Saving…' : 'Create salon' }}
+          {{ ((loading$ | async) ? 'addSalon.submitting' : 'addSalon.submit') | translate }}
         </button>
       </footer>
     </form>

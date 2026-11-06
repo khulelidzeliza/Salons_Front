@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { Component, DestroyRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,7 +19,7 @@ export interface CatalogFilters {
 @Component({
   selector: 'app-filter-bar',
   standalone: true,
-  imports: [LucideAngularModule],
+  imports: [TranslatePipe, LucideAngularModule],
   templateUrl: './filter-bar.component.html',
   styleUrl: './filter-bar.component.scss',
 })
@@ -40,28 +41,28 @@ export class FilterBarComponent implements OnInit, OnDestroy {
   private search$ = new Subject<string>();
 
   readonly categoryOptions: { label: string; value: ProcedureType | '' }[] = [
-    { label: 'All', value: '' },
-    { label: 'Hair', value: 'HAIR' },
-    { label: 'Nails', value: 'NAIL' },
-    { label: 'Barber', value: 'BARBER' },
-    { label: 'Cosmetic', value: 'COSMETIC' },
-    { label: 'Laser', value: 'LASER' },
-    { label: 'Tattoo', value: 'TATTOO' },
+    { label: 'procedure.ALL', value: '' },
+    { label: 'procedure.HAIR', value: 'HAIR' },
+    { label: 'procedure.NAIL', value: 'NAIL' },
+    { label: 'procedure.BARBER', value: 'BARBER' },
+    { label: 'procedure.COSMETIC', value: 'COSMETIC' },
+    { label: 'procedure.LASER', value: 'LASER' },
+    { label: 'procedure.TATTOO', value: 'TATTOO' },
   ];
 
   readonly priceOptions: { label: string; value: BudgetLevel | '' }[] = [
-    { label: 'Any price', value: '' },
-    { label: 'Cheapest', value: 'CHEAPEST' },
-    { label: 'Cheap', value: 'CHEAP' },
-    { label: 'Medium', value: 'MEDIUM' },
-    { label: 'Expensive', value: 'EXPENSIVE' },
-    { label: 'Premium', value: 'MOST_EXPENSIVE' },
+    { label: 'budget.ANY', value: '' },
+    { label: 'budget.CHEAPEST', value: 'CHEAPEST' },
+    { label: 'budget.CHEAP', value: 'CHEAP' },
+    { label: 'budget.MEDIUM', value: 'MEDIUM' },
+    { label: 'budget.EXPENSIVE', value: 'EXPENSIVE' },
+    { label: 'budget.MOST_EXPENSIVE', value: 'MOST_EXPENSIVE' },
   ];
 
   readonly audienceOptions: { label: string; value: Audience }[] = [
-    { label: 'Everyone', value: '' },
-    { label: 'Women', value: 'WOMEN' },
-    { label: 'Men', value: 'MEN' },
+    { label: 'audience.ALL', value: '' },
+    { label: 'audience.WOMEN', value: 'WOMEN' },
+    { label: 'audience.MEN', value: 'MEN' },
   ];
 
   get activeCount(): number {

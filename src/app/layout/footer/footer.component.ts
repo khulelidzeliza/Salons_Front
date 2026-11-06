@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LucideAngularModule, Instagram, MessageCircle, Music2 } from 'lucide-angular';
@@ -7,7 +8,7 @@ interface FooterLink { label: string; link: string; query?: Record<string, strin
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [RouterLink, LucideAngularModule],
+  imports: [TranslatePipe, RouterLink, LucideAngularModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })
@@ -20,28 +21,28 @@ export class FooterComponent {
 
   readonly columns: { title: string; links: FooterLink[] }[] = [
     {
-      title: 'Discover',
+      title: 'footer.discover.title',
       links: [
-        { label: 'Salons', link: '/' },
-        { label: 'Barbershops', link: '/', query: { category: 'BARBER' } },
-        { label: 'Tattoo studios', link: '/', query: { category: 'TATTOO' } },
-        { label: 'Nail studios', link: '/', query: { category: 'NAIL' } },
+        { label: 'footer.discover.salons', link: '/' },
+        { label: 'footer.discover.barbershops', link: '/', query: { category: 'BARBER' } },
+        { label: 'footer.discover.tattoo', link: '/', query: { category: 'TATTOO' } },
+        { label: 'footer.discover.nails', link: '/', query: { category: 'NAIL' } },
       ],
     },
     {
-      title: 'The platform',
+      title: 'footer.platform.title',
       links: [
-        { label: 'About us', link: '/about' },
-        { label: 'List your salon', link: '/auth/sign-in' },
-        { label: 'Contact', link: '/contact' },
+        { label: 'footer.platform.about', link: '/about' },
+        { label: 'footer.platform.listSalon', link: '/auth/sign-in' },
+        { label: 'footer.platform.contact', link: '/contact' },
       ],
     },
     {
-      title: 'Support',
+      title: 'footer.support.title',
       links: [
-        { label: 'Help center', link: '/help' },
-        { label: 'Privacy policy', link: '/privacy' },
-        { label: 'Terms & conditions', link: '/terms' },
+        { label: 'footer.support.help', link: '/help' },
+        { label: 'footer.support.privacy', link: '/privacy' },
+        { label: 'footer.support.terms', link: '/terms' },
       ],
     },
   ];

@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { Component, inject, output } from '@angular/core';
 import {
   AbstractControl,
@@ -22,7 +23,7 @@ const passwordsMatch: ValidatorFn = (group: AbstractControl): ValidationErrors |
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [TranslatePipe, ReactiveFormsModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })

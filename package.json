@@ -23,6 +23,7 @@
     "@angular/router": "^19.2.0",
     "@angular/ssr": "^19.2.27",
     "@apollo/client": "^3.14.1",
+    "@ngx-translate/core": "^17.0.0",
     "@ngxs/devtools-plugin": "^19.0.0",
     "@ngxs/store": "^19.0.0",
     "apollo-angular": "^8.0.2",

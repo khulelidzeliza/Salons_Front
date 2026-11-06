@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { Component, inject } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { SalonSelectors } from '../../../store/salon-state/salon-selector';

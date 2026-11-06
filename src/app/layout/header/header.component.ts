@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { Component, HostListener, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
@@ -11,19 +12,26 @@ import { AddSalonModalComponent } from '../../shared/add-salon-modal/add-salon-m
 import { ConfirmModalComponent } from '../../shared/confirm-modal/confirm-modal.component';
 import { SalonType } from '../../store/salon-state/salon-modal';
 import { UserSelectors } from '../../store/user-state/user.selector';
+import { LanguageService } from '../../core/i18n/language.service';
 
 const HERO_ROUTES = ['/', '/profile', '/salons'];
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterLink, LucideAngularModule, AddSalonModalComponent, ConfirmModalComponent],
+  imports: [TranslatePipe, CommonModule, RouterLink, LucideAngularModule, AddSalonModalComponent, ConfirmModalComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
   private store = inject(Store);
   private router = inject(Router);
+  private language = inject(LanguageService);
+
+  readonly lang = this.language.lang;
+  toggleLang(): void {
+    this.language.toggle();
+  }
 
   readonly HeartIcon = Heart;
   readonly UserIcon = User;

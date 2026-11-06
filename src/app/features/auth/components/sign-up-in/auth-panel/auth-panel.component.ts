@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { Component, ElementRef, inject, signal, ViewChild } from '@angular/core';
 import LoginComponent from '../login/login.component';
 import RegisterComponent from '../register/register.component';
@@ -8,7 +9,7 @@ type AuthTab = 'login' | 'register';
 @Component({
   selector: 'app-auth-panel',
   standalone: true,
-  imports: [LoginComponent, RegisterComponent,ForgotPasswordComponent],
+  imports: [TranslatePipe, LoginComponent, RegisterComponent,ForgotPasswordComponent],
   templateUrl: './auth-panel.component.html',
   styleUrl: './auth-panel.component.scss',
 })

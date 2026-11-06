@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { env } from '../../../../../../environments/environment';
@@ -11,7 +12,7 @@ export interface WorkingResultProcedure {
 @Component({
   selector: 'app-working-results',
   standalone: true,
-  imports: [CommonModule],
+  imports: [TranslatePipe, CommonModule],
   templateUrl: './working-results.component.html',
   styleUrl: './working-results.component.scss'
 })

@@ -91,7 +91,7 @@ export class ProcedureState {
       tap(() => ctx.patchState({ saving: false })),
       catchError(err => {
         console.error('[SaveProcedures] failed:', err);
-        ctx.patchState({ saving: false, error: 'Failed to save procedures' });
+        ctx.patchState({ saving: false, error: 'errors.saveProcedures' });
         return throwError(() => err);
       }),
     );

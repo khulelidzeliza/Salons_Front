@@ -1,11 +1,11 @@
 <div class="auth-view">
-  <p class="eyebrow">Welcome back</p>
-  <h2 class="form-heading">Sign in to your salon</h2>
-  <p class="form-sub">Pick up right where you left off.</p>
+  <p class="eyebrow">{{ 'auth.login.eyebrow' | translate }}</p>
+  <h2 class="form-heading">{{ 'auth.login.title' | translate }}</h2>
+  <p class="form-sub">{{ 'auth.login.sub' | translate }}</p>
 
   <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="field">
-      <label class="field__label" for="login-email">Email</label>
+      <label class="field__label" for="login-email">{{ 'auth.login.email' | translate }}</label>
       <input
         id="login-email"
         type="email"
@@ -16,12 +16,12 @@
         autocomplete="email"
       />
       @if (isInvalid('email')) {
-        <span class="field__error">Enter a valid email address.</span>
+        <span class="field__error">{{ 'auth.login.emailError' | translate }}</span>
       }
     </div>
 
     <div class="field">
-      <label class="field__label" for="login-password">Password</label>
+      <label class="field__label" for="login-password">{{ 'auth.login.password' | translate }}</label>
       <input
         id="login-password"
         type="password"
@@ -32,27 +32,25 @@
         autocomplete="current-password"
       />
       @if (isInvalid('password')) {
-        <span class="field__error">Password is required.</span>
+        <span class="field__error">{{ 'auth.login.passwordError' | translate }}</span>
       }
     </div>
 
     <div class="form-row">
       <label class="check">
         <input type="checkbox" formControlName="keepSignedIn" />
-        Keep me signed in
+        {{ 'auth.login.keepSignedIn' | translate }}
       </label>
-      <button type="button" class="link" (click)="forgotRequested.emit($event)">Forgot password?</button>
+      <button type="button" class="link" (click)="forgotRequested.emit($event)">{{ 'auth.login.forgot' | translate }}</button>
     </div>
 
 <button type="submit" class="submit" [disabled]="loading()">
-  {{ loading() ? 'Signing in…' : 'Sign in' }}
+  {{ (loading() ? 'auth.login.submitting' : 'auth.login.submit') | translate }}
 </button>  </form>
 
 
   <p class="form-footer">
-    New to Maison Lueur?
-    <button type="button" class="link" (click)="switchToRegister.emit()">
-      Create an account
-    </button>
+    {{ 'auth.login.newHere' | translate }}
+    <button type="button" class="link" (click)="switchToRegister.emit()">{{ 'auth.login.createAccount' | translate }}</button>
   </p>
 </div>

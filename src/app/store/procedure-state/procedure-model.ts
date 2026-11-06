@@ -1,12 +1,12 @@
 import { ProcedureType } from '../../../generated/graphql';
 
 export const PROCEDURE_TYPES: { value: ProcedureType; label: string }[] = [
-  { value: 'HAIR', label: 'Hair' },
-  { value: 'NAIL', label: 'Nails' },
-  { value: 'BARBER', label: 'Barber' },
-  { value: 'COSMETIC', label: 'Cosmetic' },
-  { value: 'LASER', label: 'Laser' },
-  { value: 'TATTOO', label: 'Tattoo' },
+  { value: 'HAIR', label: 'procedure.HAIR' },
+  { value: 'NAIL', label: 'procedure.NAIL' },
+  { value: 'BARBER', label: 'procedure.BARBER' },
+  { value: 'COSMETIC', label: 'procedure.COSMETIC' },
+  { value: 'LASER', label: 'procedure.LASER' },
+  { value: 'TATTOO', label: 'procedure.TATTOO' },
 ];
 
 // Must match the order of the C# ProcedureType enum

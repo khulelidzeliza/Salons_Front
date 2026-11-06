@@ -1,6 +1,6 @@
 <article class="card salon-card">
   <div class="salon-card__image">
-    <span class="salon-card__badge">Published</span>
+    <span class="salon-card__badge">{{ 'profile.salons.published' | translate }}</span>
 
     @if (salon.pictures.length) {
       <img
@@ -21,8 +21,8 @@
     <h3 class="salon-card__title">{{ salon.englishName }}</h3>
 
     <div class="salon-card__actions">
-      <button type="button" class="btn btn-secondary" (click)="onEdit()">✎ Edit</button>
-      <button type="button" class="btn salon-card__remove" (click)="askDelete()">Remove</button>
+      <button type="button" class="btn btn-secondary" (click)="onEdit()">{{ 'profile.salons.edit' | translate }}</button>
+      <button type="button" class="btn salon-card__remove" (click)="askDelete()">{{ 'profile.salons.remove' | translate }}</button>
     </div>
   </div>
 </article>
@@ -31,10 +31,10 @@
   [open]="showDeleteConfirm"
   variant="danger"
   [loading]="deleting"
-  title="Delete salon?"
-  [message]="'Delete ' + salon.englishName + '? This can’t be undone.'"
-  confirmText="Delete"
-  cancelText="Keep it"
+  [title]="'profile.salons.deleteModal.title' | translate"
+  [message]="'profile.salons.deleteModal.message' | translate: { name: salon.englishName }"
+  [confirmText]="'profile.salons.deleteModal.confirm' | translate"
+  [cancelText]="'profile.salons.deleteModal.cancel' | translate"
   (confirmed)="onRemove()"
   (cancelled)="showDeleteConfirm = false">
 </app-confirm-modal>

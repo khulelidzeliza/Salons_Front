@@ -1,22 +1,22 @@
 <section class="contact">
   <header>
-    <p class="contact__eyebrow">Come see us</p>
-    <h2 class="contact__title">Contact</h2>
+    <p class="contact__eyebrow">{{ 'salonDetail.contact.eyebrow' | translate }}</p>
+    <h2 class="contact__title">{{ 'salonDetail.contact.title' | translate }}</h2>
   </header>
 
   <div class="contact__grid">
     <a class="contact__item contact__item--link" *ngIf="salon.phoneNumber" [href]="'tel:' + salon.phoneNumber">
       <span class="contact__icon">✆</span>
-      <span class="contact__text"><small>Phone</small>{{ salon.phoneNumber }}</span>
-      <span class="contact__cta">Call →</span>
+      <span class="contact__text"><small>{{ 'salonDetail.contact.phone' | translate }}</small>{{ salon.phoneNumber }}</span>
+      <span class="contact__cta">{{ 'salonDetail.contact.call' | translate }}</span>
     </a>
     <div class="contact__item">
       <span class="contact__icon">⌖</span>
-      <span class="contact__text"><small>Address</small>{{ salon.location }}</span>
+      <span class="contact__text"><small>{{ 'salonDetail.contact.address' | translate }}</small>{{ salon.location }}</span>
     </div>
     <div class="contact__item" *ngIf="salon.workingHours">
       <span class="contact__icon">◷</span>
-      <span class="contact__text"><small>Hours</small>{{ salon.workingHours }}</span>
+      <span class="contact__text"><small>{{ 'salonDetail.contact.hours' | translate }}</small>{{ salon.workingHours }}</span>
     </div>
   </div>
 

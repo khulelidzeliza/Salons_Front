@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import {
   Component,
   ElementRef,
@@ -18,7 +19,7 @@ import { ResendVerificationCode, VerifyEmail } from '../../../../../store/user-s
 @Component({
   selector: 'app-email-verification',
   standalone: true,
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './email-verification.component.html',
   styleUrls: ['./email-verification.component.scss'],
 })

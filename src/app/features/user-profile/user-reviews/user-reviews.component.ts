@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { DatePipe } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 import { Store } from '@ngxs/store';
@@ -6,7 +7,7 @@ import { UserSelectors } from '../../../store/user-state/user.selector';
 
 @Component({
   selector: 'app-user-reviews',
-  imports: [DatePipe],
+  imports: [TranslatePipe, DatePipe],
   templateUrl: './user-reviews.component.html',
   styleUrl: './user-reviews.component.scss'
 })

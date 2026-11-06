@@ -17,7 +17,7 @@
                 [class.btn-primary]="variant === 'default'"
                 [class.btn-danger]="variant === 'danger'"
                 [disabled]="loading" (click)="onConfirm()">
-          {{ loading ? 'Please wait…' : confirmText }}
+          {{ loading ? ('confirmModal.pleaseWait' | translate) : confirmText }}
         </button>
       </div>
     </div>

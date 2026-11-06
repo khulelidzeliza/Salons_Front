@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MysalonCardComponent } from "./mysalon-card/mysalon-card.component";
@@ -10,7 +11,7 @@ import { AddSalonModalComponent } from '../../../shared/add-salon-modal/add-salo
 import { CatalogFilters } from '../../salons/components/filter-bar/filter-bar/filter-bar.component';
 @Component({
   selector: 'app-user-salons',
-  imports: [CommonModule, MysalonCardComponent, AddSalonModalComponent],
+  imports: [TranslatePipe, CommonModule, MysalonCardComponent, AddSalonModalComponent],
   templateUrl: './user-salons.component.html',
   styleUrl: './user-salons.component.scss'
 })

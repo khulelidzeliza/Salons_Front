@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { Component, inject, Input } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { GetMySalonsQuery } from '../../../../../generated/graphql';
@@ -11,7 +12,7 @@ type Salon = GetMySalonsQuery['getMySalons'][number];
 @Component({
   selector: 'app-mysalon-card',
   standalone: true,
-  imports: [ConfirmModalComponent, EditSalonModalComponent],
+  imports: [TranslatePipe, ConfirmModalComponent, EditSalonModalComponent],
   templateUrl: './mysalon-card.component.html',
   styleUrl: './mysalon-card.component.scss',
 })

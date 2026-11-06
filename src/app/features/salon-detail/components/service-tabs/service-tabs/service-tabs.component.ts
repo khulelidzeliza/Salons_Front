@@ -1,10 +1,11 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-service-tabs',
   standalone: true,
-  imports: [CommonModule],
+  imports: [TranslatePipe, CommonModule],
   templateUrl: './service-tabs.component.html',
   styleUrl: './service-tabs.component.scss'
 })

@@ -5,24 +5,24 @@
 
       <div class="profile-banner__info">
         <span class="profile-banner__role">
-          {{ user.role === 'ORGANIZATOR' ? 'Organizer account' : 'Client account' }}
+          {{ (user.role === 'ORGANIZATOR' ? 'profile.info.organizerAccount' : 'profile.info.clientAccount') | translate }}
         </span>
         <h1 class="profile-banner__name">{{ user.userName }}</h1>
-        <p class="profile-banner__meta">{{ user.email }} · Member since {{ user.createdAt | date: 'y' }}</p>
+        <p class="profile-banner__meta">{{ user.email }} · {{ 'profile.info.memberSince' | translate: { year: (user.createdAt | date: 'y') } }}</p>
       </div>
     </div>
 
     <div class="profile-banner__stats">
       @if (user.role === 'ORGANIZATOR') {
         <div class="profile-banner__stat">
-          <strong>{{ user.salons.length }}</strong><span>Salons</span>
+          <strong>{{ user.salons.length }}</strong><span>{{ 'profile.info.salons' | translate }}</span>
         </div>
       } @else {
         <div class="profile-banner__stat">
-          <strong>{{ user.favorites.length }}</strong><span>Favorites</span>
+          <strong>{{ user.favorites.length }}</strong><span>{{ 'profile.info.favorites' | translate }}</span>
         </div>
         <div class="profile-banner__stat">
-          <strong>{{ user.reviews.length }}</strong><span>Reviews</span>
+          <strong>{{ user.reviews.length }}</strong><span>{{ 'profile.info.reviews' | translate }}</span>
         </div>
       }
     </div>

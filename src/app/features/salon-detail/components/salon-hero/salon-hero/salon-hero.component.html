@@ -24,9 +24,9 @@
 
         <!-- Prev / Next arrows -->
         <button *ngIf="pictures.length > 1" class="salon-hero__arrow salon-hero__arrow--prev"
-          (click)="prevSlide()" aria-label="Previous image">‹</button>
+          (click)="prevSlide()" [attr.aria-label]="'salonDetail.hero.prev' | translate">‹</button>
         <button *ngIf="pictures.length > 1" class="salon-hero__arrow salon-hero__arrow--next"
-          (click)="nextSlide()" aria-label="Next image">›</button>
+          (click)="nextSlide()" [attr.aria-label]="'salonDetail.hero.next' | translate">›</button>
       </div>
 
       <!-- Thumbnail strip -->
@@ -36,8 +36,8 @@
           class="salon-hero__thumb"
           [class.is-active]="i === activeSlide"
           (click)="setSlide(i)"
-          [attr.aria-label]="'View image ' + (i + 1)">
-          <img [src]="serverUrl + pic" [alt]="salon.englishName + ' photo ' + (i + 1)" />
+          [attr.aria-label]="'salonDetail.hero.viewImage' | translate: { n: i + 1 }">
+          <img [src]="serverUrl + pic" [alt]="'salonDetail.hero.photo' | translate: { name: salon.englishName, n: i + 1 }" />
         </button>
       </div>
     } @else {

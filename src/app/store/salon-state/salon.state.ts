@@ -49,7 +49,7 @@ export class SalonState {
         new GetMySalons(),
       ])),
       tap(() => ctx.patchState({ saving: false })),
-      catchError(err => this.fail(ctx, err, 'Failed to create salon')),
+      catchError(err => this.fail(ctx, err, 'errors.createSalon')),
     );
   }
 
@@ -73,7 +73,7 @@ export class SalonState {
         return ctx.dispatch(refresh);
       }),
       tap(() => ctx.patchState({ saving: false })),
-      catchError(err => this.fail(ctx, err, 'Failed to update salon')),
+      catchError(err => this.fail(ctx, err, 'errors.updateSalon')),
     );
   }
 
@@ -85,7 +85,7 @@ export class SalonState {
 
     const user = this.store.selectSnapshot(UserSelectors.getUser);
     if (!user?.id) {
-      ctx.patchState({ error: 'You need to be logged in.' });
+      ctx.patchState({ error: 'errors.notLoggedIn' });
       return throwError(() => new Error('Not logged in'));
     }
 
@@ -102,7 +102,7 @@ export class SalonState {
           deleting: false,
         });
       }),
-      catchError(err => this.fail(ctx, err, 'Failed to delete salon')),
+      catchError(err => this.fail(ctx, err, 'errors.deleteSalon')),
     );
   }
 
@@ -133,7 +133,7 @@ export class SalonState {
           ctx.patchState({
             selectedSalon: salon,
             loading: false,
-            error: salon ? null : 'salon not found',
+            error: salon ? null : 'errors.salonNotFound',
           });
         }),
       );

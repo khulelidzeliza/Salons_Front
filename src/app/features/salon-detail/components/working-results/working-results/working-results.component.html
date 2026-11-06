@@ -3,8 +3,8 @@
     <div
       class="working-results__card"
       *ngFor="let img of procedure.finishedWorks">
-      <img [src]="serverUrl + img" [alt]="procedure.procedureType" />
-      <div class="working-results__label">{{ procedure.procedureType }}</div>
+      <img [src]="serverUrl + img" [alt]="('procedure.' + procedure.procedureType) | translate" />
+      <div class="working-results__label">{{ ('procedure.' + procedure.procedureType) | translate }}</div>
     </div>
   </ng-container>
 </div>

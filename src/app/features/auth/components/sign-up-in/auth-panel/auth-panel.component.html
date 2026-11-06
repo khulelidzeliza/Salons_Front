@@ -1,7 +1,7 @@
 <section class="panel">
   <div class="panel__inner">
     <div class="auth-card">
-      <div class="tabs" role="tablist" aria-label="Authentication">
+      <div class="tabs" role="tablist" [attr.aria-label]="'auth.tabs.label' | translate">
         <div class="tabs__indicator" [class.tabs__indicator--right]="activeTab() === 'register'"></div>
         <button
           type="button"
@@ -10,9 +10,7 @@
           [class.tabs__btn--active]="activeTab() === 'login'"
           [attr.aria-selected]="activeTab() === 'login'"
           (click)="select('login')"
-        >
-          Sign in
-        </button>
+        >{{ 'auth.tabs.signIn' | translate }}</button>
         <button
           type="button"
           role="tab"
@@ -20,9 +18,7 @@
           [class.tabs__btn--active]="activeTab() === 'register'"
           [attr.aria-selected]="activeTab() === 'register'"
           (click)="select('register')"
-        >
-          Create account
-        </button>
+        >{{ 'auth.tabs.register' | translate }}</button>
       </div>
 
       @if (activeTab() === 'login') {

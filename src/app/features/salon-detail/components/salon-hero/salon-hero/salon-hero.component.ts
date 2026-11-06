@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BudgetLevel, GetSalonByIdQuery } from '../../../../../../generated/graphql';
@@ -16,7 +17,7 @@ const BUDGET_SIGNS: Record<BudgetLevel, string> = {
 @Component({
   selector: 'app-salon-hero',
   standalone: true,
-  imports: [CommonModule],
+  imports: [TranslatePipe, CommonModule],
   templateUrl: './salon-hero.component.html',
   styleUrl: './salon-hero.component.scss'
 })

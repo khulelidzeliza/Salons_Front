@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StaffCardComponent } from '../../staff-card/staff-card/staff-card.component';
@@ -5,7 +6,7 @@ import { StaffCardComponent } from '../../staff-card/staff-card/staff-card.compo
 @Component({
   selector: 'app-salon-masters',
   standalone: true,
-  imports: [CommonModule, StaffCardComponent],
+  imports: [TranslatePipe, CommonModule, StaffCardComponent],
   templateUrl: './salon-masters.component.html',
   styleUrl: './salon-masters.component.scss'
 })

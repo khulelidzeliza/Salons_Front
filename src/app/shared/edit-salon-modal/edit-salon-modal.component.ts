@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AbstractControl, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -12,11 +13,11 @@ import { UserSelectors } from '../../store/user-state/user.selector';
 type BudgetOption = { value: BudgetLevel; label: string; name: string; num: number };
 
 export const BUDGET_LEVELS: BudgetOption[] = [
-  { value: 'CHEAPEST',       label: '₾',     name: 'Cheapest',       num: 0 },
-  { value: 'CHEAP',          label: '₾₾',    name: 'Cheap',          num: 1 },
-  { value: 'MEDIUM',         label: '₾₾₾',   name: 'Medium',         num: 2 },
-  { value: 'EXPENSIVE',      label: '₾₾₾₾',  name: 'Expensive',      num: 3 },
-  { value: 'MOST_EXPENSIVE', label: '₾₾₾₾₾', name: 'Most expensive', num: 4 },
+  { value: 'CHEAPEST',       label: '₾',     name: 'budget.CHEAPEST',       num: 0 },
+  { value: 'CHEAP',          label: '₾₾',    name: 'budget.CHEAP',          num: 1 },
+  { value: 'MEDIUM',         label: '₾₾₾',   name: 'budget.MEDIUM',         num: 2 },
+  { value: 'EXPENSIVE',      label: '₾₾₾₾',  name: 'budget.EXPENSIVE',      num: 3 },
+  { value: 'MOST_EXPENSIVE', label: '₾₾₾₾₾', name: 'budget.MOST_EXPENSIVE_FULL', num: 4 },
 ];
 
 const budgetToNumber = (level: BudgetLevel): number =>
@@ -27,7 +28,7 @@ const required = [Validators.required, Validators.pattern(/\S/)];
 @Component({
   selector: 'app-edit-salon-modal',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [TranslatePipe, CommonModule, ReactiveFormsModule],
   templateUrl: './edit-salon-modal.component.html',
   styleUrls: ['../add-salon-modal/add-salon-modal.component.scss'],
   styles: [`

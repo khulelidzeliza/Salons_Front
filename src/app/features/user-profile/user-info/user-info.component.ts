@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { DatePipe } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -7,7 +8,7 @@ import { UserSelectors } from '../../../store/user-state/user.selector';
 
 @Component({
   selector: 'app-user-info',
-  imports: [DatePipe],
+  imports: [TranslatePipe, DatePipe],
   templateUrl: './user-info.component.html',
   styleUrl: './user-info.component.scss'
 })

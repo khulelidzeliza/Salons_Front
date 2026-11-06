@@ -162,3 +162,23 @@
     }
   }
 }
+
+// ── Language switch (always visible, also on mobile) ─────────
+.site-header__lang {
+  height: 40px;
+  min-width: 40px;
+  padding: 0 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--glass-light-border);
+  background: rgba(107, 39, 55, .06);
+  color: inherit;
+  font: var(--fw-semibold) 12px/1 var(--font-body);
+  letter-spacing: .08em;
+  cursor: pointer;
+  transition: background var(--dur-base) ease;
+  &:hover { background: rgba(107, 39, 55, .12); }
+}
+.site-header.is-overlay .site-header__lang {
+  background: rgba(255, 255, 255, .14);
+  &:hover { background: rgba(255, 255, 255, .24); }
+}

@@ -4,6 +4,6 @@
     class="service-tabs__pill"
     [class.is-active]="category === active"
     (click)="categorySelected.emit(category)">
-    {{ category }}
+    {{ ('procedure.' + category) | translate }}
   </button>
 </div>

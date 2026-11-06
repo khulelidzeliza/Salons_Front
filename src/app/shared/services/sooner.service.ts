@@ -1,5 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { TranslateService } from '@ngx-translate/core';
 
 export enum SOONER_TYPE {
   WARNING = 'warning',
@@ -19,37 +20,41 @@ export interface ISoonerConfig {
 })
 export class SoonerService {
   private readonly notification = inject(NzNotificationService);
+  private readonly translate = inject(TranslateService);
 
   public notify(config: ISoonerConfig): void {
-    const title = config.title || this.getDefaultTitle(config.type);
+    // title/message may be translation keys (e.g. 'toast.loginSuccess') or plain text
+    const title = this.translate.instant(config.title || this.getDefaultTitle(config.type));
+    const message = this.translate.instant(config.message);
     
-    this.notification.create(config.type, title, config.message, {
+    // Using .create() safely triggers the specific notification type
+    this.notification.create(config.type, title, message, {
       nzClass: `sooner-toast sooner-${config.type}`,
     });
   }
 
-  public success(message: string, title: string = 'Success'): void {
+  public success(message: string, title: string = 'toast.success'): void {
     this.notify({ type: SOONER_TYPE.SUCCESS, title, message });
   }
 
-  public error(message: string, title: string = 'Error'): void {
+  public error(message: string, title: string = 'toast.error'): void {
     this.notify({ type: SOONER_TYPE.ERROR, title, message });
   }
 
-  public warning(message: string, title: string = 'Warning'): void {
+  public warning(message: string, title: string = 'toast.warning'): void {
     this.notify({ type: SOONER_TYPE.WARNING, title, message });
   }
 
   private getDefaultTitle(type: SOONER_TYPE): string {
     switch (type) {
       case SOONER_TYPE.SUCCESS:
-        return 'Success!';
+        return 'toast.defaultTitle.success';
       case SOONER_TYPE.ERROR:
-        return 'Error!';
+        return 'toast.defaultTitle.error';
       case SOONER_TYPE.WARNING:
-        return 'Warning!';
+        return 'toast.defaultTitle.warning';
       default:
-        return 'Notification';
+        return 'toast.defaultTitle.info';
     }
   }
 }

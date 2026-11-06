@@ -1,8 +1,8 @@
 <div class="auth-view verify">
-  <p class="eyebrow">Check your inbox</p>
-  <h2 class="form-heading">Enter the code</h2>
+  <p class="eyebrow">{{ 'auth.verify.eyebrow' | translate }}</p>
+  <h2 class="form-heading">{{ 'auth.verify.title' | translate }}</h2>
   <p class="form-sub">
-    We sent a six-digit code to <strong>{{ email() || 'your email' }}</strong>.
+    {{ 'auth.verify.sub' | translate }} <strong>{{ email() || ('auth.verify.yourEmail' | translate) }}</strong>.
   </p>
 
   <div class="code-row" (paste)="onPaste($event)">
@@ -16,7 +16,7 @@
         [value]="d"
         (input)="onInput($event, $index)"
         (keydown)="onKeydown($event, $index)"
-        [attr.aria-label]="'Digit ' + ($index + 1)"
+        [attr.aria-label]="'auth.verify.digit' | translate: { n: $index + 1 }"
       />
     }
   </div>
@@ -25,10 +25,10 @@
 
   <p class="resend">
     @if (secondsLeft() > 0) {
-      Didn't get it? <strong>Resend in {{ countdownLabel() }}</strong>
+      {{ 'auth.verify.didntGet' | translate }} <strong>{{ 'auth.verify.resendIn' | translate: { time: countdownLabel() } }}</strong>
     } @else {
-      Didn't get it?
-      <button type="button" class="link" (click)="resend()">Resend code</button>
+      {{ 'auth.verify.didntGet' | translate }}
+      <button type="button" class="link" (click)="resend()">{{ 'auth.verify.resend' | translate }}</button>
     }
   </p>
 
@@ -38,10 +38,10 @@
     [disabled]="!canSubmit() || loading()"
     (click)="onSubmit()"
   >
-    {{ loading() ? 'Verifying…' : 'Verify code' }}
+    {{ (loading() ? 'auth.verify.submitting' : 'auth.verify.submit') | translate }}
   </button>
 
   <p class="form-footer">
-    <button type="button" class="link" (click)="onChangeEmail()">← Change email</button>
+    <button type="button" class="link" (click)="onChangeEmail()">{{ 'auth.verify.changeEmail' | translate }}</button>
   </p>
 </div>

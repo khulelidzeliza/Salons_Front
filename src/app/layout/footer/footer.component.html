@@ -2,9 +2,9 @@
   <div class="site-footer__card">
     <div class="site-footer__top">
       <div class="site-footer__brand">
-        <p class="site-footer__eyebrow">Beauty atelier · Tbilisi</p>
+        <p class="site-footer__eyebrow">{{ 'footer.eyebrow' | translate }}</p>
         <p class="site-footer__pitch">
-          Discover exceptional beauty, grooming, wellness and self-expression  <em>all in one place.</em>
+          {{ 'footer.pitch' | translate }} <em>{{ 'footer.pitchEm' | translate }}</em>
         </p>
         <div class="site-footer__socials">
           <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
@@ -21,10 +21,10 @@
 
       @for (col of columns; track col.title) {
         <div class="site-footer__col">
-          <h5>{{ col.title }}</h5>
+          <h5>{{ col.title | translate }}</h5>
           <ul>
             @for (l of col.links; track l.label) {
-              <li><a [routerLink]="l.link" [queryParams]="l.query">{{ l.label }}</a></li>
+              <li><a [routerLink]="l.link" [queryParams]="l.query">{{ l.label | translate }}</a></li>
             }
           </ul>
         </div>
@@ -34,8 +34,8 @@
     <p class="site-footer__wordmark" aria-hidden="true">Rames <em>Davarkmevt</em></p>
 
     <div class="site-footer__bottom">
-      <span>© {{ currentYear }} Rames Davarkmevt. All rights reserved.</span>
-      <span>Made warm, in Tbilisi.</span>
+      <span>{{ 'footer.rights' | translate: { year: currentYear } }}</span>
+      <span>{{ 'footer.madeIn' | translate }}</span>
     </div>
   </div>
 </footer>

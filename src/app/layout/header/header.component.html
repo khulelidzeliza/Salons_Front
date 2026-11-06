@@ -4,8 +4,12 @@
 
 
     <div class="site-header__actions">
+      <button type="button" class="site-header__lang" (click)="toggleLang()" [attr.aria-label]="lang() === 'ka' ? 'Switch to English' : 'ქართულზე გადართვა'">
+        {{ lang() === 'ka' ? 'EN' : 'KA' }}
+      </button>
+
       @if (!isOrganizer()) {
-        <button type="button" class="btn-icon site-header__icon" (click)="goFavorites()" aria-label="Favorites">
+        <button type="button" class="btn-icon site-header__icon" (click)="goFavorites()" [attr.aria-label]="'header.favorites' | translate">
           <lucide-icon [img]="HeartIcon" [size]="20"></lucide-icon>
         </button>
       }
@@ -14,44 +18,44 @@
         @if (isOrganizer()) {
           <button type="button" class="btn btn-primary btn--sm site-header__add" (click)="showAddSalon = true">
             <lucide-icon [img]="PlusIcon" [size]="16"></lucide-icon>
-            Add salon
+            {{ 'header.addSalon' | translate }}
           </button>
         }
         <a routerLink="/profile" class="site-header__account">
           <span class="site-header__avatar">{{ initials() }}</span>
           <span class="site-header__username">{{ u.userName }}</span>
         </a>
-        <button type="button" class="btn-icon site-header__icon site-header__logout" (click)="showLogoutConfirm = true" aria-label="Log out">
+        <button type="button" class="btn-icon site-header__icon site-header__logout" (click)="showLogoutConfirm = true" [attr.aria-label]="'header.logOut' | translate">
           <lucide-icon [img]="LogOutIcon" [size]="18"></lucide-icon>
         </button>
       } @else {
-        <a routerLink="/auth/sign-in" class="btn btn--sm site-header__signin">Sign in</a>
+        <a routerLink="/auth/sign-in" class="btn btn--sm site-header__signin">{{ 'header.signIn' | translate }}</a>
       }
     </div>
   </div>
 </header>
 
 <!-- Mobile dock (≤760px) -->
-<nav class="dock" aria-label="Mobile navigation">
+<nav class="dock" [attr.aria-label]="'header.dock.label' | translate">
   <a routerLink="/" class="dock__item" [class.is-active]="isHome()">
-    <lucide-icon [img]="HomeIcon" [size]="20"></lucide-icon><span>Discover</span>
+    <lucide-icon [img]="HomeIcon" [size]="20"></lucide-icon><span>{{ 'header.dock.discover' | translate }}</span>
   </a>
   @if (!isOrganizer()) {
     <button type="button" class="dock__item" (click)="goFavorites()">
-      <lucide-icon [img]="HeartIcon" [size]="20"></lucide-icon><span>Saved</span>
+      <lucide-icon [img]="HeartIcon" [size]="20"></lucide-icon><span>{{ 'header.dock.saved' | translate }}</span>
     </button>
   } @else {
     <button type="button" class="dock__item" (click)="showAddSalon = true">
-      <lucide-icon [img]="PlusIcon" [size]="20"></lucide-icon><span>Add salon</span>
+      <lucide-icon [img]="PlusIcon" [size]="20"></lucide-icon><span>{{ 'header.dock.addSalon' | translate }}</span>
     </button>
   }
   @if (user()) {
     <a routerLink="/profile" class="dock__item" [class.is-active]="isProfile()">
-      <lucide-icon [img]="UserIcon" [size]="20"></lucide-icon><span>Profile</span>
+      <lucide-icon [img]="UserIcon" [size]="20"></lucide-icon><span>{{ 'header.dock.profile' | translate }}</span>
     </a>
   } @else {
     <a routerLink="/auth/sign-in" class="dock__item">
-      <lucide-icon [img]="UserIcon" [size]="20"></lucide-icon><span>Sign in</span>
+      <lucide-icon [img]="UserIcon" [size]="20"></lucide-icon><span>{{ 'header.dock.signIn' | translate }}</span>
     </a>
   }
 </nav>
@@ -64,20 +68,20 @@
 
 <app-confirm-modal
   [open]="showLogoutConfirm"
-  title="Log out?"
-  message="You’ll need to sign in again to see your favorites and reviews."
-  confirmText="Log out"
-  cancelText="Stay"
+  [title]="'header.logoutModal.title' | translate"
+  [message]="'header.logoutModal.message' | translate"
+  [confirmText]="'header.logoutModal.confirm' | translate"
+  [cancelText]="'header.logoutModal.cancel' | translate"
   (confirmed)="logout()"
   (cancelled)="showLogoutConfirm = false">
 </app-confirm-modal>
 
 <app-confirm-modal
   [open]="showLoginRequired"
-  title="Sign in to save salons"
-  message="Create a free account or sign in to keep your favorite salons in one place."
-  confirmText="Sign in"
-  cancelText="Not now"
+  [title]="'header.loginRequired.title' | translate"
+  [message]="'header.loginRequired.message' | translate"
+  [confirmText]="'header.loginRequired.confirm' | translate"
+  [cancelText]="'header.loginRequired.cancel' | translate"
   (confirmed)="login()"
   (cancelled)="showLoginRequired = false">
 </app-confirm-modal>

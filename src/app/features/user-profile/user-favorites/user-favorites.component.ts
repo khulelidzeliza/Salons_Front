@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { RouterLink } from '@angular/router';
 import { env } from '../../../../environments/environment';
 import { Component, computed, inject } from '@angular/core';
@@ -6,7 +7,7 @@ import { UserSelectors } from '../../../store/user-state/user.selector';
 
 @Component({
   selector: 'app-user-favorites',
-  imports: [RouterLink],
+  imports: [TranslatePipe, RouterLink],
   templateUrl: './user-favorites.component.html',
   styleUrl: './user-favorites.component.scss'
 })

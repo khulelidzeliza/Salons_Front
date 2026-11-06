@@ -1,4 +1,4 @@
 <div class="action-bar" *ngIf="salon.phoneNumber || salon.instagramLink">
-  <a *ngIf="salon.phoneNumber" class="action-bar__call" [href]="'tel:' + salon.phoneNumber">✆ Call</a>
-  <a *ngIf="salon.instagramLink" class="action-bar__msg" [href]="salon.instagramLink" target="_blank" rel="noopener">Message on Instagram</a>
+  <a *ngIf="salon.phoneNumber" class="action-bar__call" [href]="'tel:' + salon.phoneNumber">{{ 'salonDetail.actionBar.call' | translate }}</a>
+  <a *ngIf="salon.instagramLink" class="action-bar__msg" [href]="salon.instagramLink" target="_blank" rel="noopener">{{ 'salonDetail.actionBar.instagram' | translate }}</a>
 </div>

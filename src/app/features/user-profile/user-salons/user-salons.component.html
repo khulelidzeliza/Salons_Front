@@ -1,8 +1,8 @@
 <section class="catalog">
   <header class="catalog__header">
     <div>
-      <p class="catalog__eyebrow">Business</p>
-      <h1>Your salons</h1>
+      <p class="catalog__eyebrow">{{ 'profile.salons.eyebrow' | translate }}</p>
+      <h1>{{ 'profile.salons.title' | translate }}</h1>
     </div>
   </header>
 
@@ -22,8 +22,8 @@
         </div>
       } @else {
         <div class="catalog__empty">
-          <p>You haven't added a salon yet.</p>
-          <button type="button" class="btn btn-primary btn--sm" (click)="openAddSalonModal()">Add your salon</button>
+          <p>{{ 'profile.salons.empty' | translate }}</p>
+          <button type="button" class="btn btn-primary btn--sm" (click)="openAddSalonModal()">{{ 'profile.salons.add' | translate }}</button>
         </div>
       }
     }

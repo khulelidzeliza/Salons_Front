@@ -9,7 +9,6 @@ import { withNgxsReduxDevtoolsPlugin } from '@ngxs/devtools-plugin';
 
 import { provideAnimations } from '@angular/platform-browser/animations'; // or provideAnimationsAsync
 import { catchError, of } from 'rxjs';
-import { AuthTokenService } from './shared/services/auth-token.service';
 import { isPlatformBrowser } from '@angular/common';
 import { authInterceptor } from './core/interceptors/auth-interceptor';
 import { errorInterceptor } from './core/interceptors/error-interceptor';
@@ -18,6 +17,10 @@ import { FetchUser } from './store/user-state/user.actions';
 import { UserState } from './store/user-state/user.state';
 import { SalonState } from './store/salon-state/salon.state';
 import { ProcedureState } from './store/procedure-state/procedure-state';
+import { provideTranslateService, provideTranslateLoader } from '@ngx-translate/core';
+import { JsonTranslateLoader } from './core/i18n/json-translate.loader';
+import { AuthTokenService } from './shared/services/auth-token.service';
+import { LanguageService } from './core/i18n/language.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -30,6 +33,13 @@ export const appConfig: ApplicationConfig = {
       withInterceptors([apiInterceptor, errorInterceptor, authInterceptor])
     ),
     graphqlProvider,
+
+    provideTranslateService({
+      loader: provideTranslateLoader(JsonTranslateLoader),
+      fallbackLang: 'en',
+      lang: 'ka',
+    }),
+    provideAppInitializer(() => inject(LanguageService).init()),
 
      provideAppInitializer(() => {
         const platformId = inject(PLATFORM_ID);

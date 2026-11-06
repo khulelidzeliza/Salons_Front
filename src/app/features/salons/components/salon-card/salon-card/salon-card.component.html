@@ -22,7 +22,7 @@
       class="salon-card__fav"
       [class.is-active]="salon.isFavoritedByCurrentUser"
       (click)="onFavoriteClick($event)"
-      [attr.aria-label]="salon.isFavoritedByCurrentUser ? 'Remove from favorites' : 'Add to favorites'">
+      [attr.aria-label]="(salon.isFavoritedByCurrentUser ? 'salonCard.removeFavorite' : 'salonCard.addFavorite') | translate">
       ♥
     </button>
   </div>

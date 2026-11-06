@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { Component, computed, effect, inject, signal } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { DatePipe } from '@angular/common';
@@ -9,7 +10,7 @@ import { UserSelectors } from '../../../store/user-state/user.selector';
 @Component({
   selector: 'app-user-details',
   standalone: true,
-  imports: [ReactiveFormsModule, DatePipe, LucideAngularModule],
+  imports: [TranslatePipe, ReactiveFormsModule, DatePipe, LucideAngularModule],
   templateUrl: './user-details.component.html',
   styleUrl: './user-details.component.scss',
 })

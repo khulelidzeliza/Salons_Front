@@ -1,10 +1,10 @@
 <section class="favorites">
   <header class="favorites__head">
     <div>
-      <p class="favorites__eyebrow">Saved</p>
-      <h2 class="favorites__title">Your favorites</h2>
+      <p class="favorites__eyebrow">{{ 'profile.favorites.eyebrow' | translate }}</p>
+      <h2 class="favorites__title">{{ 'profile.favorites.title' | translate }}</h2>
     </div>
-    <a routerLink="/" class="favorites__more">Discover more →</a>
+    <a routerLink="/" class="favorites__more">{{ 'profile.favorites.more' | translate }}</a>
   </header>
 
   @if (favorites().length) {
@@ -26,8 +26,8 @@
     </div>
   } @else {
     <div class="favorites__empty">
-      <p>No favorites yet — tap ♥ on any salon to save it here.</p>
-      <a routerLink="/" class="btn btn-primary btn--sm">Discover salons</a>
+      <p>{{ 'profile.favorites.empty' | translate }}</p>
+      <a routerLink="/" class="btn btn-primary btn--sm">{{ 'profile.favorites.discover' | translate }}</a>
     </div>
   }
 </section>

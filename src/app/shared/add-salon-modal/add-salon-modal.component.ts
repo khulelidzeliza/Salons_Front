@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
@@ -12,7 +13,7 @@ import { SalonSelectors } from '../../store/salon-state/salon-selector';
 @Component({
   selector: 'app-add-salon-modal',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [TranslatePipe, CommonModule, ReactiveFormsModule],
   templateUrl: './add-salon-modal.component.html',
   styleUrl: './add-salon-modal.component.scss',
 })

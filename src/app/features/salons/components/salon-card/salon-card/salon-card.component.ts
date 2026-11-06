@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -17,7 +18,7 @@ const BUDGET_SIGNS: Record<BudgetLevel, string> = {
 @Component({
   selector: 'app-salon-card',
   standalone: true,
-  imports: [CommonModule, RouterLink, DecimalPipe],
+  imports: [TranslatePipe, CommonModule, RouterLink, DecimalPipe],
   templateUrl: './salon-card.component.html',
   styleUrl: './salon-card.component.scss'
 })

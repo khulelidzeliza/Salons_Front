@@ -1,22 +1,22 @@
 <form class="form auth-view form--grid" [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="field">
-    <label class="field__label" for="reg-username">Username</label>
+    <label class="field__label" for="reg-username">{{ 'auth.register.username' | translate }}</label>
     <input
       id="reg-username"
       type="text"
       class="field__input"
-      placeholder="camille.aubert"
+      [placeholder]="'auth.register.usernamePlaceholder' | translate"
       formControlName="userName"
       [class.is-invalid]="isInvalid('userName')"
       autocomplete="username"
     />
     @if (isInvalid('userName')) {
-      <span class="field__error">Please choose a username.</span>
+      <span class="field__error">{{ 'auth.register.usernameError' | translate }}</span>
     }
   </div>
 
   <div class="field">
-    <label class="field__label" for="reg-email">Email</label>
+    <label class="field__label" for="reg-email">{{ 'auth.register.email' | translate }}</label>
     <input
       id="reg-email"
       type="email"
@@ -27,14 +27,14 @@
       autocomplete="email"
     />
     @if (isInvalid('email')) {
-      <span class="field__error">Enter a valid email address.</span>
+      <span class="field__error">{{ 'auth.register.emailError' | translate }}</span>
     }
   </div>
 
 
 
   <div class="field">
-    <label class="field__label" for="reg-password">Choose a password</label>
+    <label class="field__label" for="reg-password">{{ 'auth.register.password' | translate }}</label>
     <input
       id="reg-password"
       type="password"
@@ -45,11 +45,11 @@
       autocomplete="new-password"
     />
     @if (isInvalid('password')) {
-      <span class="field__error">Use at least 8 characters.</span>
+      <span class="field__error">{{ 'auth.register.passwordError' | translate }}</span>
     }
   </div>
 <div class="field">
-  <label class="field__label" for="reg-password-confirm">Repeat password</label>
+  <label class="field__label" for="reg-password-confirm">{{ 'auth.register.confirmPassword' | translate }}</label>
   <input
     id="reg-password-confirm"
     type="password"
@@ -61,34 +61,34 @@
   />
   @if (isConfirmInvalid()) {
     <span class="field__error">
-      {{ form.hasError('passwordMismatch') ? 'Passwords do not match.' : 'Please repeat your password.' }}
+      {{ (form.hasError('passwordMismatch') ? 'auth.register.passwordMismatch' : 'auth.register.confirmRequired') | translate }}
     </span>
   }
 </div>
 
   <div class="field field--full">
-    <span class="field__label">I'm here to…</span>
-    <div class="role-picker" role="radiogroup" aria-label="Account type">
+    <span class="field__label">{{ 'auth.register.hereTo' | translate }}</span>
+    <div class="role-picker" role="radiogroup" [attr.aria-label]="'auth.register.accountType' | translate">
       <label class="role-option" [class.is-active]="form.value.role === Roles.User">
         <input type="radio" [value]="Roles.User" formControlName="role" />
-        <span class="role-option__title">Book appointments</span>
-        <span class="role-option__desc">Find salons and reserve your chair.</span>
+        <span class="role-option__title">{{ 'auth.register.roleUser.title' | translate }}</span>
+        <span class="role-option__desc">{{ 'auth.register.roleUser.desc' | translate }}</span>
       </label>
 
       <label class="role-option" [class.is-active]="form.value.role === Roles.Organizator">
         <input type="radio" [value]="Roles.Organizator" formControlName="role" />
-        <span class="role-option__title">Manage a salon</span>
-        <span class="role-option__desc">List your services and take bookings.</span>
+        <span class="role-option__title">{{ 'auth.register.roleOrganizer.title' | translate }}</span>
+        <span class="role-option__desc">{{ 'auth.register.roleOrganizer.desc' | translate }}</span>
       </label>
     </div>
   </div>
 
   <label class="check field--full">
     <input type="checkbox" formControlName="agree" />
-    I agree to the treatment &amp; cancellation policy.
+    {{ 'auth.register.agree' | translate }}
   </label>
 
   <button type="submit" class="submit field--full" [disabled]="loading()">
-    {{ loading() ? 'Creating…' : 'Create account' }}
+    {{ (loading() ? 'auth.register.submitting' : 'auth.register.submit') | translate }}
   </button>
 </form>

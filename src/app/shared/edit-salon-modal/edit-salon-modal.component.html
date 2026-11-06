@@ -3,108 +3,110 @@
     <div class="modal-card card" (click)="$event.stopPropagation()">
       <header class="modal-head">
         <div>
-          <p class="modal-eyebrow">Edit listing</p>
-          <h3 class="modal-title">{{ original?.englishName || 'Edit salon' }}</h3>
+          <p class="modal-eyebrow">{{ 'editSalon.eyebrow' | translate }}</p>
+          <h3 class="modal-title">{{ original?.englishName || ('editSalon.title' | translate) }}</h3>
         </div>
         <button type="button" class="modal-close" [disabled]="vm.saving || vm.deleting" (click)="close()"
-          aria-label="Close">✕</button>
+          [attr.aria-label]="'editSalon.close' | translate">✕</button>
       </header>
 
-      <p class="modal-loading" *ngIf="loadingSalon">Loading salon…</p>
-      <p class="err" *ngIf="!original && !loadingSalon && vm.error">{{ vm.error }}</p>
+      <p class="modal-loading" *ngIf="loadingSalon">{{ 'editSalon.loading' | translate }}</p>
+      <p class="err" *ngIf="!original && !loadingSalon && vm.error">{{ $any(vm.error) | translate }}
+</p>
 
       <form class="modal-form" *ngIf="original" [formGroup]="form" (ngSubmit)="submit()">
         <div class="modal-body">
           <div class="grid">
             <div class="field">
-              <label>Name (English)</label>
+              <label>{{ 'editSalon.nameEn' | translate }}</label>
               <input class="input" type="text" formControlName="englishName" />
               <small class="err" *ngIf="form.get('englishName')?.touched && form.get('englishName')?.invalid">
-                English name is required
+                {{ 'editSalon.nameEnError' | translate }}
               </small>
             </div>
 
             <div class="field">
-              <label>Name (Georgian)</label>
+              <label>{{ 'editSalon.nameKa' | translate }}</label>
               <input class="input" type="text" formControlName="georgianName" />
               <small class="err" *ngIf="form.get('georgianName')?.touched && form.get('georgianName')?.invalid">
-                Georgian name is required
+                {{ 'editSalon.nameKaError' | translate }}
               </small>
             </div>
 
             <div class="field">
-              <label>City / Location</label>
+              <label>{{ 'editSalon.location' | translate }}</label>
               <input class="input" type="text" formControlName="location" />
               <small class="err" *ngIf="form.get('location')?.touched && form.get('location')?.invalid">
-                Location is required
+                {{ 'editSalon.locationError' | translate }}
               </small>
             </div>
 
             <div class="field">
-              <label>Phone number</label>
+              <label>{{ 'editSalon.phone' | translate }}</label>
               <input class="input" type="text" formControlName="phoneNumber" placeholder="+995 ..." />
             </div>
 
             <div class="field">
-              <label>Email</label>
+              <label>{{ 'editSalon.email' | translate }}</label>
               <input class="input" type="email" formControlName="email" placeholder="salon@mail.com" />
               <small class="err" *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
-                Enter a valid email
+                {{ 'editSalon.emailError' | translate }}
               </small>
             </div>
             <div class="field">
-              <label>Description</label>
-              <input class="input" type="text" formControlName="description" placeholder="Describe your salon..." />
+              <label>{{ 'editSalon.description' | translate }}</label>
+              <input class="input" type="text" formControlName="description" [placeholder]="'editSalon.descriptionPlaceholder' | translate" />
             </div>
             <div class="field">
-              <label>Working hours</label>
-              <input class="input" type="text" formControlName="workingHours" placeholder="Mon–Sat 10:00–20:00" />
+              <label>{{ 'editSalon.hours' | translate }}</label>
+              <input class="input" type="text" formControlName="workingHours" [placeholder]="'editSalon.hoursPlaceholder' | translate" />
             </div>
 
             <div class="field">
-              <label>Facebook link</label>
+              <label>{{ 'editSalon.facebook' | translate }}</label>
               <input class="input" type="text" formControlName="facebookLink" placeholder="https://facebook.com/..." />
             </div>
 
             <div class="field">
-              <label>Instagram link</label>
+              <label>{{ 'editSalon.instagram' | translate }}</label>
               <input class="input" type="text" formControlName="instagramLink"
                 placeholder="https://instagram.com/..." />
             </div>
           </div>
 
           <div class="field">
-            <label>Price level</label>
-            <div class="segmented" role="radiogroup" aria-label="Price level">
+            <label>{{ 'editSalon.priceLevel' | translate }}</label>
+            <div class="segmented" role="radiogroup" [attr.aria-label]="'editSalon.priceLevel' | translate">
               <button type="button" class="segmented__item" *ngFor="let b of budgetLevels" role="radio"
-                [attr.aria-checked]="form.controls.price.value === b.value" [attr.title]="b.name"
+                [attr.aria-checked]="form.controls.price.value === b.value" [attr.title]="b.name | translate"
                 [class.is-active]="form.controls.price.value === b.value" (click)="setPrice(b.value)">{{ b.label
                 }}</button>
             </div>
           </div>
 
-          <p class="err" *ngIf="vm.error">{{ vm.error }}</p>
+          <p class="err" *ngIf="vm.error">{{ $any(vm.error) | translate }}
+</p>
         </div>
 
         <footer class="actions">
           <div class="danger-zone">
             <button *ngIf="!askingDelete" type="button" class="btn btn-ghost-danger"
-              [disabled]="vm.saving || vm.deleting" (click)="askDelete()">Delete salon</button>
+              [disabled]="vm.saving || vm.deleting" (click)="askDelete()">{{ 'editSalon.delete' | translate }}</button>
 
             <ng-container *ngIf="askingDelete">
-              <span class="danger-zone__q">Delete this salon for good?</span>
+              <span class="danger-zone__q">{{ 'editSalon.deleteQuestion' | translate }}</span>
               <button type="button" class="btn btn-danger btn--sm" [disabled]="vm.deleting" (click)="remove()">
-                {{ vm.deleting ? 'Deleting…' : 'Yes, delete' }}
+                {{ (vm.deleting ? 'editSalon.deleting' : 'editSalon.deleteConfirm') | translate }}
               </button>
               <button type="button" class="btn btn-secondary btn--sm" [disabled]="vm.deleting"
-                (click)="cancelDelete()">Keep it</button>
+                (click)="cancelDelete()">{{ 'editSalon.keepIt' | translate }}</button>
             </ng-container>
           </div>
 
           <button type="button" class="btn btn-secondary" [disabled]="vm.saving || vm.deleting"
-            (click)="close()">Cancel</button>
+            (click)="close()">{{ 'editSalon.cancel' | translate }}</button>
           <button type="submit" class="btn btn-primary" [disabled]="vm.saving || vm.deleting || !form.dirty">
-            {{ vm.saving ? 'Saving…' : 'Save changes' }}
+            {{ (vm.saving ? 'editSalon.saving' : 'editSalon.save') | translate }}
           </button>
         </footer>
       </form>

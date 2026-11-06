@@ -1,6 +1,6 @@
 import { inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { ITokenResponse } from '../../features/auth/models/auth.models';
 import { isPlatformBrowser } from '@angular/common';
+import { ITokenResponse } from '../../features/auth/models/auth.models';
 
 export interface ITokens {
   access_token: string | null;
