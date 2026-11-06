@@ -2,9 +2,9 @@ import { Component, inject, Input } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { GetMySalonsQuery } from '../../../../../generated/graphql';
 import { env } from '../../../../../environments/environment';
-import { ConfirmModalComponent } from '../../../../shared/components/modals/confirm-modal/confirm-modal.component';
-import { EditSalonModalComponent } from '../../../../shared/components/modals/edit-salon-modal/edit-salon-modal.component';
 import { DeleteSalon } from '../../../../store/salon-state/salon-actions';
+import { ConfirmModalComponent } from '../../../../shared/confirm-modal/confirm-modal.component';
+import { EditSalonModalComponent } from '../../../../shared/edit-salon-modal/edit-salon-modal.component';
 
 type Salon = GetMySalonsQuery['getMySalons'][number];
 

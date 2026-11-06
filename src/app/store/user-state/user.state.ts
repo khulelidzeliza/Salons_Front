@@ -5,10 +5,10 @@ import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { FetchUser, LoginUser, LogOut, RegisterUser, ResendVerificationCode, VerifyEmail } from './user.actions';
 import { IUserStore } from './user.model';
-import { AuthTokenService } from '../../core/services/auth-token.service';
+import { AuthTokenService } from '../../shared/services/auth-token.service';
 import { GetUserGQL } from '../../../generated/graphql';
 import { AuthService } from '../../features/auth/services/auth.service';
-import { SoonerService } from '../../core/services/sooner.service';
+import { SoonerService } from '../../shared/services/sooner.service';
 
 @State<IUserStore>({
   name: 'user',

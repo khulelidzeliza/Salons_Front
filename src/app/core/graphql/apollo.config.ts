@@ -6,7 +6,7 @@ import { HttpLink } from 'apollo-angular/http';
 import { inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { env } from '../../../environments/environment';
-import { AuthTokenService } from '../services/auth-token.service';
+import { AuthTokenService } from '../../shared/services/auth-token.service';
 
 export const graphqlProvider = provideApollo(() => {
   const httpLink = inject(HttpLink);

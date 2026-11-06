@@ -2,12 +2,12 @@ import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
-import { ProcedureType } from '../../../../../generated/graphql';
-import { SalonSelectors } from '../../../../store/salon-state/salon-selector';
-import { AddSalon, SalonPayload } from '../../../../store/salon-state/salon-actions';
-import { PROCEDURE_TYPES, ProcedureDraft } from '../../../../store/procedure-state/procedure-model';
-import { ProcedureSelectors } from '../../../../store/procedure-state/procedure-selector';
-import { AddMaster, AddProcedureDraft, RemoveMaster, RemoveProcedureDraft, SetFinishedWorks, SetMasterDraft, SetProcedureType } from '../../../../store/procedure-state/procedure-actions';
+import { ProcedureType } from '../../../generated/graphql';
+import { AddProcedureDraft, RemoveProcedureDraft, SetProcedureType, SetMasterDraft, AddMaster, RemoveMaster, SetFinishedWorks } from '../../store/procedure-state/procedure-actions';
+import { PROCEDURE_TYPES, ProcedureDraft } from '../../store/procedure-state/procedure-model';
+import { ProcedureSelectors } from '../../store/procedure-state/procedure-selector';
+import { SalonPayload, AddSalon } from '../../store/salon-state/salon-actions';
+import { SalonSelectors } from '../../store/salon-state/salon-selector';
 
 @Component({
   selector: 'app-add-salon-modal',

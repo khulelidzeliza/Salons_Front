@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Store } from '@ngxs/store';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
-import { SalonService } from '../../shared/components/modals/add-salon-modal/services/salon.service';
 import { SalonStateModel } from './salon-modal';
 import { AddSalon, DeleteSalon, GetMySalons, GetSalonById, GetSalons, UpdateSalon } from './salon-actions';
 import { GetMySalonsGQL, GetSalonByIdGQL, GetSalonsGQL } from '../../../generated/graphql';
 import { UserSelectors } from '../user-state/user.selector';
 import { ResetProcedureDrafts, SaveProcedures } from '../procedure-state/procedure-actions';
+import { SalonService } from '../../features/salons/services/salon.service';
 
 type Ctx = StateContext<SalonStateModel>;
 

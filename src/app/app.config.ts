@@ -9,7 +9,7 @@ import { withNgxsReduxDevtoolsPlugin } from '@ngxs/devtools-plugin';
 
 import { provideAnimations } from '@angular/platform-browser/animations'; // or provideAnimationsAsync
 import { catchError, of } from 'rxjs';
-import { AuthTokenService } from './core/services/auth-token.service';
+import { AuthTokenService } from './shared/services/auth-token.service';
 import { isPlatformBrowser } from '@angular/common';
 import { authInterceptor } from './core/interceptors/auth-interceptor';
 import { errorInterceptor } from './core/interceptors/error-interceptor';

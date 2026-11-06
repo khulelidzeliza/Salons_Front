@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { CatalogFilters } from '../../catalog/components/filter-bar/filter-bar/filter-bar.component';
 import { CommonModule } from '@angular/common';
 import { MysalonCardComponent } from "./mysalon-card/mysalon-card.component";
 import { Store } from '@ngxs/store';
@@ -7,7 +6,8 @@ import { SalonSelectors } from '../../../store/salon-state/salon-selector';
 import { GetMySalons } from '../../../store/salon-state/salon-actions';
 import { Observable } from 'rxjs';
 import { MySalons, SalonType } from '../../../store/salon-state/salon-modal';
-import { AddSalonModalComponent } from '../../../shared/components/modals/add-salon-modal/add-salon-modal.component'; 
+import { AddSalonModalComponent } from '../../../shared/add-salon-modal/add-salon-modal.component';
+import { CatalogFilters } from '../../salons/components/filter-bar/filter-bar/filter-bar.component';
 @Component({
   selector: 'app-user-salons',
   imports: [CommonModule, MysalonCardComponent, AddSalonModalComponent],

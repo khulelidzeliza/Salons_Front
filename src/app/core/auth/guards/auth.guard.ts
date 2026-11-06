@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../../../features/auth/services/auth.service';
-import { AuthTokenService } from '../../services/auth-token.service';
+import { AuthTokenService } from '../../../shared/services/auth-token.service';
 import { Store } from '@ngxs/store';
 import { filter, map, switchMap, take } from 'rxjs';
 import { UserSelectors } from '../../../store/user-state/user.selector';

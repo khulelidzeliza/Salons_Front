@@ -1,26 +1,25 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { map } from 'rxjs/operators';
-import { SalonCardComponent } from '../../components/salon-card/salon-card/salon-card.component';
-import { CatalogFilters, FilterBarComponent } from '../../components/filter-bar/filter-bar/filter-bar.component';
-import { GetSalonsGQL, SalonFilterInput } from '../../../../../generated/graphql';
-import { GetMySalons, GetSalons } from '../../../../store/salon-state/salon-actions';
 import { Store } from '@ngxs/store';
-import { SalonSelectors } from '../../../../store/salon-state/salon-selector';
+import { SalonSelectors } from '../../../store/salon-state/salon-selector';
+import { map } from 'rxjs';
+import { SalonFilterInput } from '../../../../generated/graphql';
+import { GetSalons, GetMySalons } from '../../../store/salon-state/salon-actions';
+import { CatalogFilters, FilterBarComponent } from '../components/filter-bar/filter-bar/filter-bar.component';
+import { SalonCardComponent } from '../components/salon-card/salon-card/salon-card.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-catalog-page',
-  standalone: true,
-  imports: [CommonModule, SalonCardComponent, FilterBarComponent],
-  templateUrl: './catalog-page.component.html',
-  styleUrl: './catalog-page.component.scss'
+  selector: 'app-salon-page',
+  imports: [SalonCardComponent, FilterBarComponent , AsyncPipe],
+  templateUrl: './salon-page.component.html',
+  styleUrl: './salon-page.component.scss'
 })
-export class CatalogPageComponent {
+export default class SalonPageComponent {
 
   private readonly store = inject(Store);
 
-  salons$     = this.store.select(SalonSelectors.items);
-  loading$    = this.store.select(SalonSelectors.loading);
+  salons$ = this.store.select(SalonSelectors.items);
+  loading$ = this.store.select(SalonSelectors.loading);
   totalCount$ = this.salons$.pipe(map(s => s.length));
 
   ngOnInit() {
@@ -66,4 +65,5 @@ export class CatalogPageComponent {
     // TODO: REST call to favorite/unfavorite endpoint
     console.log('toggle favorite', salonId);
   }
+
 }
