@@ -1,0 +1,379 @@
+{
+  "common": {
+    "cancel": "გაუქმება",
+    "saveChanges": "ცვლილებების შენახვა",
+    "saving": "ინახება…",
+    "close": "დახურვა",
+    "pleaseWait": "გთხოვთ, მოიცადოთ…",
+    "keepIt": "დატოვება",
+    "notAddedYet": "ჯერ არ არის დამატებული",
+    "salon": "სალონი",
+    "salons": "სალონი"
+  },
+  "procedure": {
+    "ALL": "ყველა",
+    "HAIR": "თმა",
+    "NAIL": "ფრჩხილები",
+    "BARBER": "ბარბერი",
+    "COSMETIC": "კოსმეტოლოგია",
+    "LASER": "ლაზერი",
+    "TATTOO": "ტატუ"
+  },
+  "budget": {
+    "ANY": "ნებისმიერი ფასი",
+    "CHEAPEST": "ყველაზე იაფი",
+    "CHEAP": "იაფი",
+    "MEDIUM": "საშუალო",
+    "EXPENSIVE": "ძვირი",
+    "MOST_EXPENSIVE": "პრემიუმი",
+    "MOST_EXPENSIVE_FULL": "ყველაზე ძვირი"
+  },
+  "audience": {
+    "ALL": "ყველასთვის",
+    "WOMEN": "ქალები",
+    "MEN": "კაცები"
+  },
+  "header": {
+    "favorites": "რჩეულები",
+    "addSalon": "სალონის დამატება",
+    "logOut": "გასვლა",
+    "signIn": "შესვლა",
+    "dock": {
+      "label": "მობილური ნავიგაცია",
+      "discover": "აღმოაჩინე",
+      "saved": "შენახული",
+      "addSalon": "დამატება",
+      "profile": "პროფილი",
+      "signIn": "შესვლა"
+    },
+    "logoutModal": {
+      "title": "გსურთ გასვლა?",
+      "message": "რჩეულებისა და შეფასებების სანახავად ხელახლა შესვლა დაგჭირდებათ.",
+      "confirm": "გასვლა",
+      "cancel": "დარჩენა"
+    },
+    "loginRequired": {
+      "title": "შედით, რომ სალონები შეინახოთ",
+      "message": "შექმენით უფასო ანგარიში ან შედით, რომ რჩეული სალონები ერთ ადგილას გქონდეთ.",
+      "confirm": "შესვლა",
+      "cancel": "ახლა არა"
+    }
+  },
+  "footer": {
+    "eyebrow": "სილამაზის ატელიე · თბილისი",
+    "pitch": "აღმოაჩინეთ საუკეთესო სილამაზის, მოვლის, ველნესისა და თვითგამოხატვის სივრცეები",
+    "pitchEm": "ერთ ადგილას.",
+    "discover": {
+      "title": "აღმოაჩინე",
+      "salons": "სალონები",
+      "barbershops": "ბარბერშოპები",
+      "tattoo": "ტატუ სტუდიები",
+      "nails": "მანიკურის სტუდიები"
+    },
+    "platform": {
+      "title": "პლატფორმა",
+      "about": "ჩვენ შესახებ",
+      "listSalon": "დაამატე შენი სალონი",
+      "contact": "კონტაქტი"
+    },
+    "support": {
+      "title": "დახმარება",
+      "help": "დახმარების ცენტრი",
+      "privacy": "კონფიდენციალურობის პოლიტიკა",
+      "terms": "წესები და პირობები"
+    },
+    "rights": "© {{year}} Rames Davarkmevt. ყველა უფლება დაცულია.",
+    "madeIn": "შექმნილია სიყვარულით, თბილისში."
+  },
+  "salons": {
+    "hero": {
+      "title": "იპოვე შენი",
+      "titleEm": "სალონი"
+    },
+    "trending": "ამ კვირის ტოპი"
+  },
+  "filters": {
+    "searchPlaceholder": "სალონი ან მისამართი…",
+    "searchLabel": "სალონის ძებნა სახელით ან მისამართით",
+    "clearSearch": "ძებნის გასუფთავება",
+    "procedures": "პროცედურები",
+    "filtersCount": "ფილტრები · {{count}}",
+    "priceFor": "ფასი · ვისთვის",
+    "filters": "ფილტრები",
+    "reset": "გასუფთავება",
+    "price": "ფასი",
+    "for": "ვისთვის",
+    "show": "{{count}} სალონის ჩვენება"
+  },
+  "salonCard": {
+    "addFavorite": "რჩეულებში დამატება",
+    "removeFavorite": "რჩეულებიდან წაშლა"
+  },
+  "salonDetail": {
+    "hero": {
+      "prev": "წინა ფოტო",
+      "next": "შემდეგი ფოტო",
+      "viewImage": "ფოტო {{n}}",
+      "photo": "{{name}} — ფოტო {{n}}"
+    },
+    "results": {
+      "title": "შესრულებული",
+      "titleEm": "ნამუშევრები"
+    },
+    "masters": {
+      "eyebrow": "გუნდი",
+      "our": "ჩვენი",
+      "titleEm": "მასტერები"
+    },
+    "contact": {
+      "eyebrow": "გვესტუმრეთ",
+      "title": "კონტაქტი",
+      "phone": "ტელეფონი",
+      "call": "დარეკვა →",
+      "address": "მისამართი",
+      "hours": "სამუშაო საათები"
+    },
+    "actionBar": {
+      "call": "✆ დარეკვა",
+      "instagram": "მოგვწერეთ Instagram-ზე"
+    }
+  },
+  "auth": {
+    "tabs": {
+      "label": "ავტორიზაცია",
+      "signIn": "შესვლა",
+      "register": "რეგისტრაცია"
+    },
+    "login": {
+      "eyebrow": "კეთილი დაბრუნება",
+      "title": "შედი შენს ანგარიშზე",
+      "sub": "განაგრძე იქიდან, სადაც გაჩერდი.",
+      "email": "ელ-ფოსტა",
+      "emailPlaceholder": "you@example.com",
+      "emailError": "შეიყვანეთ სწორი ელ-ფოსტა.",
+      "password": "პაროლი",
+      "passwordError": "პაროლი სავალდებულოა.",
+      "keepSignedIn": "დამიმახსოვრე",
+      "forgot": "დაგავიწყდა პაროლი?",
+      "submit": "შესვლა",
+      "submitting": "შესვლა…",
+      "newHere": "პირველად ხარ Rames Davarkmevt-ზე?",
+      "createAccount": "შექმენი ანგარიში"
+    },
+    "forgot": {
+      "eyebrow": "ანგარიშის აღდგენა",
+      "title": "პაროლის აღდგენა",
+      "sub": "შეიყვანე ელ-ფოსტა და აღდგენის ბმულს გამოგიგზავნით.",
+      "email": "ელ-ფოსტა",
+      "emailPlaceholder": "you@example.com",
+      "emailError": "შეიყვანეთ სწორი ელ-ფოსტა.",
+      "submit": "ბმულის გაგზავნა",
+      "back": "შესვლაზე დაბრუნება"
+    },
+    "register": {
+      "username": "მომხმარებლის სახელი",
+      "usernamePlaceholder": "nino.beridze",
+      "usernameError": "გთხოვთ, აირჩიოთ მომხმარებლის სახელი.",
+      "email": "ელ-ფოსტა",
+      "emailPlaceholder": "you@example.com",
+      "emailError": "შეიყვანეთ სწორი ელ-ფოსტა.",
+      "password": "შექმენით პაროლი",
+      "passwordError": "მინიმუმ 8 სიმბოლო.",
+      "confirmPassword": "გაიმეორეთ პაროლი",
+      "passwordMismatch": "პაროლები არ ემთხვევა.",
+      "confirmRequired": "გთხოვთ, გაიმეოროთ პაროლი.",
+      "hereTo": "მე მინდა…",
+      "accountType": "ანგარიშის ტიპი",
+      "roleUser": {
+        "title": "ჯავშნის გაკეთება",
+        "desc": "იპოვე სალონი და დაიჯავშნე ადგილი."
+      },
+      "roleOrganizer": {
+        "title": "სალონის მართვა",
+        "desc": "დაამატე სერვისები და მიიღე ჯავშნები."
+      },
+      "agree": "ვეთანხმები მომსახურებისა და გაუქმების პირობებს.",
+      "submit": "რეგისტრაცია",
+      "submitting": "იქმნება…"
+    },
+    "verify": {
+      "eyebrow": "შეამოწმე ელ-ფოსტა",
+      "title": "შეიყვანე კოდი",
+      "sub": "ექვსნიშნა კოდი გამოგზავნილია მისამართზე",
+      "yourEmail": "შენი ელ-ფოსტა",
+      "digit": "ციფრი {{n}}",
+      "didntGet": "არ მიგიღია?",
+      "resendIn": "თავიდან გაგზავნა {{time}}-ში",
+      "resend": "კოდის ხელახლა გაგზავნა",
+      "submit": "კოდის დადასტურება",
+      "submitting": "მოწმდება…",
+      "changeEmail": "← ელ-ფოსტის შეცვლა"
+    }
+  },
+  "profile": {
+    "info": {
+      "organizerAccount": "ორგანიზატორის ანგარიში",
+      "clientAccount": "კლიენტის ანგარიში",
+      "memberSince": "წევრი {{year}} წლიდან",
+      "salons": "სალონი",
+      "favorites": "რჩეული",
+      "reviews": "შეფასება"
+    },
+    "details": {
+      "eyebrow": "ანგარიში",
+      "title": "შენი მონაცემები",
+      "edit": "✎ რედაქტირება",
+      "fullName": "სახელი და გვარი",
+      "nameError": "გთხოვთ, შეიყვანოთ სახელი.",
+      "email": "ელ-ფოსტა -",
+      "emailHint": "შეცვლა შეუძლებელია",
+      "phone": "ტელეფონი",
+      "age": "ასაკი",
+      "ageError": "შეიყვანეთ ასაკი 1-დან 120-მდე.",
+      "city": "ქალაქი",
+      "memberSince": "წევრია",
+      "accountType": "ანგარიშის ტიპი",
+      "organizer": "ორგანიზატორი",
+      "client": "კლიენტი",
+      "cancel": "გაუქმება",
+      "save": "ცვლილებების შენახვა"
+    },
+    "favorites": {
+      "eyebrow": "შენახული",
+      "title": "შენი რჩეულები",
+      "more": "მეტის ნახვა →",
+      "empty": "რჩეულები ჯერ არ გაქვს — დააჭირე ♥-ს ნებისმიერ სალონზე და აქ შეინახება.",
+      "discover": "სალონების ნახვა"
+    },
+    "reviews": {
+      "eyebrow": "შეფასებები",
+      "title": "შენი შეფასებები",
+      "outOf": "{{n}} 5-დან",
+      "empty": "შეფასება ჯერ არ დაგიწერია."
+    },
+    "salons": {
+      "eyebrow": "ბიზნესი",
+      "title": "შენი სალონები",
+      "empty": "სალონი ჯერ არ დაგიმატებია.",
+      "add": "დაამატე სალონი",
+      "published": "გამოქვეყნებული",
+      "edit": "✎ რედაქტირება",
+      "remove": "წაშლა",
+      "deleteModal": {
+        "title": "წავშალოთ სალონი?",
+        "message": "წაიშალოს {{name}}? ამ მოქმედების გაუქმება შეუძლებელია.",
+        "confirm": "წაშლა",
+        "cancel": "დატოვება"
+      }
+    }
+  },
+  "addSalon": {
+    "eyebrow": "ახალი განცხადება",
+    "title": "სალონის დამატება",
+    "close": "დახურვა",
+    "nameEn": "სახელი (ინგლისურად)",
+    "nameEnPlaceholder": "Maison Lueur — Vake",
+    "nameEnError": "ინგლისური სახელი სავალდებულოა",
+    "nameKa": "სახელი (ქართულად)",
+    "nameKaPlaceholder": "მეზონ ლუერი — ვაკე",
+    "nameKaError": "ქართული სახელი სავალდებულოა",
+    "location": "ქალაქი / მისამართი",
+    "locationPlaceholder": "თბილისი",
+    "locationError": "მისამართი სავალდებულოა",
+    "price": "საწყისი ფასი",
+    "pricePlaceholder": "25",
+    "priceError": "შეიყვანეთ სწორი ფასი",
+    "phone": "ტელეფონის ნომერი",
+    "phonePlaceholder": "+995 ...",
+    "hours": "სამუშაო საათები",
+    "hoursPlaceholder": "ორშ–შაბ 10:00–20:00",
+    "pictures": "ფოტოები",
+    "photosSelected": "არჩეულია {{count}} ფოტო",
+    "upload": "ატვირთე სალონის ფოტოები",
+    "chooseAgain": "დააჭირე თავიდან ასარჩევად",
+    "uploadHint": "JPG ან PNG · პირველი იქნება მთავარი ფოტო",
+    "procedures": {
+      "eyebrow": "სერვისები",
+      "title": "პროცედურები",
+      "add": "+ პროცედურის დამატება",
+      "empty": "პროცედურები ჯერ არ არის — დაამატე სერვისები, მასტერები და ნამუშევრების ფოტოები.",
+      "remove": "პროცედურის წაშლა",
+      "type": "ტიპი",
+      "masters": "მასტერები",
+      "masterPlaceholder": "ჩაწერე სახელი და დააჭირე Enter-ს",
+      "removeMaster": "{{name}}-ის წაშლა",
+      "works": "შესრულებული ნამუშევრები",
+      "addWorks": "ნამუშევრების ფოტოების დამატება"
+    },
+    "error": "სალონის შექმნა ვერ მოხერხდა. სცადეთ თავიდან.",
+    "cancel": "გაუქმება",
+    "submit": "სალონის შექმნა",
+    "submitting": "ინახება…"
+  },
+  "editSalon": {
+    "eyebrow": "განცხადების რედაქტირება",
+    "title": "სალონის რედაქტირება",
+    "close": "დახურვა",
+    "loading": "სალონი იტვირთება…",
+    "nameEn": "სახელი (ინგლისურად)",
+    "nameEnError": "ინგლისური სახელი სავალდებულოა",
+    "nameKa": "სახელი (ქართულად)",
+    "nameKaError": "ქართული სახელი სავალდებულოა",
+    "location": "ქალაქი / მისამართი",
+    "locationError": "მისამართი სავალდებულოა",
+    "phone": "ტელეფონის ნომერი",
+    "phonePlaceholder": "+995 ...",
+    "email": "ელ-ფოსტა",
+    "emailPlaceholder": "salon@mail.com",
+    "emailError": "შეიყვანეთ სწორი ელ-ფოსტა",
+    "description": "აღწერა",
+    "descriptionPlaceholder": "აღწერე შენი სალონი...",
+    "hours": "სამუშაო საათები",
+    "hoursPlaceholder": "ორშ–შაბ 10:00–20:00",
+    "facebook": "Facebook-ის ბმული",
+    "facebookPlaceholder": "https://facebook.com/...",
+    "instagram": "Instagram-ის ბმული",
+    "instagramPlaceholder": "https://instagram.com/...",
+    "priceLevel": "ფასის დონე",
+    "delete": "სალონის წაშლა",
+    "deleteQuestion": "წავშალოთ ეს სალონი სამუდამოდ?",
+    "deleteConfirm": "დიახ, წაშალე",
+    "deleting": "იშლება…",
+    "keepIt": "დატოვება",
+    "cancel": "გაუქმება",
+    "save": "ცვლილებების შენახვა",
+    "saving": "ინახება…"
+  },
+  "confirmModal": {
+    "pleaseWait": "გთხოვთ, მოიცადოთ…"
+  },
+  "toast": {
+    "success": "წარმატება",
+    "error": "შეცდომა",
+    "warning": "ყურადღება",
+    "defaultTitle": {
+      "success": "წარმატება!",
+      "error": "შეცდომა!",
+      "warning": "ყურადღება!",
+      "info": "შეტყობინება"
+    },
+    "serverError": "სერვერის შეცდომა!",
+    "registerSuccess": "რეგისტრაცია წარმატებით დასრულდა. შეამოწმე ელ-ფოსტა :)",
+    "registerFailed": "რეგისტრაცია ვერ მოხერხდა. სცადეთ თავიდან.",
+    "emailNotVerified": "ელ-ფოსტა დადასტურებული არ არის. შეამოწმე ელ-ფოსტა :)",
+    "loginSuccess": "წარმატებით შეხვედი.",
+    "loginFailed": "შესვლა ვერ მოხერხდა. შეამოწმე მონაცემები.",
+    "verifySuccess": "ელ-ფოსტა წარმატებით დადასტურდა",
+    "alreadyVerified": "ელ-ფოსტა უკვე დადასტურებულია",
+    "verifyFailed": "დადასტურება ვერ მოხერხდა. კოდი არასწორია ან ვადაგასულია.",
+    "logoutSuccess": "წარმატებით გამოხვედი"
+  },
+  "errors": {
+    "createSalon": "სალონის შექმნა ვერ მოხერხდა",
+    "updateSalon": "სალონის განახლება ვერ მოხერხდა",
+    "deleteSalon": "სალონის წაშლა ვერ მოხერხდა",
+    "notLoggedIn": "საჭიროა ავტორიზაცია.",
+    "salonNotFound": "სალონი ვერ მოიძებნა",
+    "saveProcedures": "პროცედურების შენახვა ვერ მოხერხდა"
+  }
+}

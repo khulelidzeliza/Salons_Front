@@ -1,0 +1,379 @@
+{
+  "common": {
+    "cancel": "Cancel",
+    "saveChanges": "Save changes",
+    "saving": "Saving…",
+    "close": "Close",
+    "pleaseWait": "Please wait…",
+    "keepIt": "Keep it",
+    "notAddedYet": "Not added yet",
+    "salon": "salon",
+    "salons": "salons"
+  },
+  "procedure": {
+    "ALL": "All",
+    "HAIR": "Hair",
+    "NAIL": "Nails",
+    "BARBER": "Barber",
+    "COSMETIC": "Cosmetic",
+    "LASER": "Laser",
+    "TATTOO": "Tattoo"
+  },
+  "budget": {
+    "ANY": "Any price",
+    "CHEAPEST": "Cheapest",
+    "CHEAP": "Cheap",
+    "MEDIUM": "Medium",
+    "EXPENSIVE": "Expensive",
+    "MOST_EXPENSIVE": "Premium",
+    "MOST_EXPENSIVE_FULL": "Most expensive"
+  },
+  "audience": {
+    "ALL": "Everyone",
+    "WOMEN": "Women",
+    "MEN": "Men"
+  },
+  "header": {
+    "favorites": "Favorites",
+    "addSalon": "Add salon",
+    "logOut": "Log out",
+    "signIn": "Sign in",
+    "dock": {
+      "label": "Mobile navigation",
+      "discover": "Discover",
+      "saved": "Saved",
+      "addSalon": "Add salon",
+      "profile": "Profile",
+      "signIn": "Sign in"
+    },
+    "logoutModal": {
+      "title": "Log out?",
+      "message": "You’ll need to sign in again to see your favorites and reviews.",
+      "confirm": "Log out",
+      "cancel": "Stay"
+    },
+    "loginRequired": {
+      "title": "Sign in to save salons",
+      "message": "Create a free account or sign in to keep your favorite salons in one place.",
+      "confirm": "Sign in",
+      "cancel": "Not now"
+    }
+  },
+  "footer": {
+    "eyebrow": "Beauty atelier · Tbilisi",
+    "pitch": "Discover exceptional beauty, grooming, wellness and self-expression",
+    "pitchEm": "all in one place.",
+    "discover": {
+      "title": "Discover",
+      "salons": "Salons",
+      "barbershops": "Barbershops",
+      "tattoo": "Tattoo studios",
+      "nails": "Nail studios"
+    },
+    "platform": {
+      "title": "The platform",
+      "about": "About us",
+      "listSalon": "List your salon",
+      "contact": "Contact"
+    },
+    "support": {
+      "title": "Support",
+      "help": "Help center",
+      "privacy": "Privacy policy",
+      "terms": "Terms & conditions"
+    },
+    "rights": "© {{year}} Rames Davarkmevt. All rights reserved.",
+    "madeIn": "Made warm, in Tbilisi."
+  },
+  "salons": {
+    "hero": {
+      "title": "Find your",
+      "titleEm": "salon"
+    },
+    "trending": "Trending this week"
+  },
+  "filters": {
+    "searchPlaceholder": "Salon or location…",
+    "searchLabel": "Search salons by name or location",
+    "clearSearch": "Clear search",
+    "procedures": "Procedures",
+    "filtersCount": "Filters · {{count}}",
+    "priceFor": "Price · For",
+    "filters": "Filters",
+    "reset": "Reset",
+    "price": "Price",
+    "for": "For",
+    "show": "Show {{count}} {{label}}"
+  },
+  "salonCard": {
+    "addFavorite": "Add to favorites",
+    "removeFavorite": "Remove from favorites"
+  },
+  "salonDetail": {
+    "hero": {
+      "prev": "Previous image",
+      "next": "Next image",
+      "viewImage": "View image {{n}}",
+      "photo": "{{name}} photo {{n}}"
+    },
+    "results": {
+      "title": "Working",
+      "titleEm": "results"
+    },
+    "masters": {
+      "eyebrow": "The people",
+      "our": "Our",
+      "titleEm": "masters"
+    },
+    "contact": {
+      "eyebrow": "Come see us",
+      "title": "Contact",
+      "phone": "Phone",
+      "call": "Call →",
+      "address": "Address",
+      "hours": "Hours"
+    },
+    "actionBar": {
+      "call": "✆ Call",
+      "instagram": "Message on Instagram"
+    }
+  },
+  "auth": {
+    "tabs": {
+      "label": "Authentication",
+      "signIn": "Sign in",
+      "register": "Create account"
+    },
+    "login": {
+      "eyebrow": "Welcome back",
+      "title": "Sign in to your salon",
+      "sub": "Pick up right where you left off.",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "emailError": "Enter a valid email address.",
+      "password": "Password",
+      "passwordError": "Password is required.",
+      "keepSignedIn": "Keep me signed in",
+      "forgot": "Forgot password?",
+      "submit": "Sign in",
+      "submitting": "Signing in…",
+      "newHere": "New to Rames Davarkmevt?",
+      "createAccount": "Create an account"
+    },
+    "forgot": {
+      "eyebrow": "Account recovery",
+      "title": "Reset your password",
+      "sub": "Enter your email and we'll send you a reset link.",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "emailError": "Enter a valid email address.",
+      "submit": "Send reset link",
+      "back": "Back to sign in"
+    },
+    "register": {
+      "username": "Username",
+      "usernamePlaceholder": "camille.aubert",
+      "usernameError": "Please choose a username.",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "emailError": "Enter a valid email address.",
+      "password": "Choose a password",
+      "passwordError": "Use at least 8 characters.",
+      "confirmPassword": "Repeat password",
+      "passwordMismatch": "Passwords do not match.",
+      "confirmRequired": "Please repeat your password.",
+      "hereTo": "I'm here to…",
+      "accountType": "Account type",
+      "roleUser": {
+        "title": "Book appointments",
+        "desc": "Find salons and reserve your chair."
+      },
+      "roleOrganizer": {
+        "title": "Manage a salon",
+        "desc": "List your services and take bookings."
+      },
+      "agree": "I agree to the treatment & cancellation policy.",
+      "submit": "Create account",
+      "submitting": "Creating…"
+    },
+    "verify": {
+      "eyebrow": "Check your inbox",
+      "title": "Enter the code",
+      "sub": "We sent a six-digit code to",
+      "yourEmail": "your email",
+      "digit": "Digit {{n}}",
+      "didntGet": "Didn't get it?",
+      "resendIn": "Resend in {{time}}",
+      "resend": "Resend code",
+      "submit": "Verify code",
+      "submitting": "Verifying…",
+      "changeEmail": "← Change email"
+    }
+  },
+  "profile": {
+    "info": {
+      "organizerAccount": "Organizer account",
+      "clientAccount": "Client account",
+      "memberSince": "Member since {{year}}",
+      "salons": "Salons",
+      "favorites": "Favorites",
+      "reviews": "Reviews"
+    },
+    "details": {
+      "eyebrow": "Account",
+      "title": "Your details",
+      "edit": "✎ Edit",
+      "fullName": "Full name",
+      "nameError": "Please enter your name.",
+      "email": "Email -",
+      "emailHint": "can't be changed",
+      "phone": "Phone",
+      "age": "Age",
+      "ageError": "Enter an age between 1 and 120.",
+      "city": "City",
+      "memberSince": "Member since",
+      "accountType": "Account type",
+      "organizer": "Organizer",
+      "client": "Client",
+      "cancel": "Cancel",
+      "save": "Save changes"
+    },
+    "favorites": {
+      "eyebrow": "Saved",
+      "title": "Your favorites",
+      "more": "Discover more →",
+      "empty": "No favorites yet — tap ♥ on any salon to save it here.",
+      "discover": "Discover salons"
+    },
+    "reviews": {
+      "eyebrow": "Feedback",
+      "title": "Your reviews",
+      "outOf": "{{n}} out of 5",
+      "empty": "You haven’t written any reviews yet."
+    },
+    "salons": {
+      "eyebrow": "Business",
+      "title": "Your salons",
+      "empty": "You haven't added a salon yet.",
+      "add": "Add your salon",
+      "published": "Published",
+      "edit": "✎ Edit",
+      "remove": "Remove",
+      "deleteModal": {
+        "title": "Delete salon?",
+        "message": "Delete {{name}}? This can’t be undone.",
+        "confirm": "Delete",
+        "cancel": "Keep it"
+      }
+    }
+  },
+  "addSalon": {
+    "eyebrow": "New listing",
+    "title": "Add salon",
+    "close": "Close",
+    "nameEn": "Name (English)",
+    "nameEnPlaceholder": "Maison Lueur — Vake",
+    "nameEnError": "English name is required",
+    "nameKa": "Name (Georgian)",
+    "nameKaPlaceholder": "მეზონ ლუერი — ვაკე",
+    "nameKaError": "Georgian name is required",
+    "location": "City / Location",
+    "locationPlaceholder": "Tbilisi",
+    "locationError": "Location is required",
+    "price": "Starting price",
+    "pricePlaceholder": "25",
+    "priceError": "Enter a valid price",
+    "phone": "Phone number",
+    "phonePlaceholder": "+995 ...",
+    "hours": "Working hours",
+    "hoursPlaceholder": "Mon–Sat 10:00–20:00",
+    "pictures": "Pictures",
+    "photosSelected": "{{count}} photo(s) selected",
+    "upload": "Upload salon photos",
+    "chooseAgain": "Click to choose again",
+    "uploadHint": "JPG or PNG · the first one is the cover",
+    "procedures": {
+      "eyebrow": "Services",
+      "title": "Procedures",
+      "add": "+ Add procedure",
+      "empty": "No procedures yet — add services, masters and work photos.",
+      "remove": "Remove procedure",
+      "type": "Type",
+      "masters": "Masters",
+      "masterPlaceholder": "Type a name, press Enter",
+      "removeMaster": "Remove {{name}}",
+      "works": "Finished works",
+      "addWorks": "Add work photos"
+    },
+    "error": "Failed to create salon. Please try again.",
+    "cancel": "Cancel",
+    "submit": "Create salon",
+    "submitting": "Saving…"
+  },
+  "editSalon": {
+    "eyebrow": "Edit listing",
+    "title": "Edit salon",
+    "close": "Close",
+    "loading": "Loading salon…",
+    "nameEn": "Name (English)",
+    "nameEnError": "English name is required",
+    "nameKa": "Name (Georgian)",
+    "nameKaError": "Georgian name is required",
+    "location": "City / Location",
+    "locationError": "Location is required",
+    "phone": "Phone number",
+    "phonePlaceholder": "+995 ...",
+    "email": "Email",
+    "emailPlaceholder": "salon@mail.com",
+    "emailError": "Enter a valid email",
+    "description": "Description",
+    "descriptionPlaceholder": "Describe your salon...",
+    "hours": "Working hours",
+    "hoursPlaceholder": "Mon–Sat 10:00–20:00",
+    "facebook": "Facebook link",
+    "facebookPlaceholder": "https://facebook.com/...",
+    "instagram": "Instagram link",
+    "instagramPlaceholder": "https://instagram.com/...",
+    "priceLevel": "Price level",
+    "delete": "Delete salon",
+    "deleteQuestion": "Delete this salon for good?",
+    "deleteConfirm": "Yes, delete",
+    "deleting": "Deleting…",
+    "keepIt": "Keep it",
+    "cancel": "Cancel",
+    "save": "Save changes",
+    "saving": "Saving…"
+  },
+  "confirmModal": {
+    "pleaseWait": "Please wait…"
+  },
+  "toast": {
+    "success": "Success",
+    "error": "Error",
+    "warning": "Warning",
+    "defaultTitle": {
+      "success": "Success!",
+      "error": "Error!",
+      "warning": "Warning!",
+      "info": "Notification"
+    },
+    "serverError": "Internal server error!",
+    "registerSuccess": "You registered successfully. Check your email :)",
+    "registerFailed": "Registration failed. Please try again.",
+    "emailNotVerified": "Your email is not verified. Check your email :)",
+    "loginSuccess": "You logged in successfully.",
+    "loginFailed": "Login failed. Please check your credentials.",
+    "verifySuccess": "Your email has been verified successfully",
+    "alreadyVerified": "Email is already verified",
+    "verifyFailed": "Verification failed. Invalid or expired code.",
+    "logoutSuccess": "You logged out successfully"
+  },
+  "errors": {
+    "createSalon": "Failed to create salon",
+    "updateSalon": "Failed to update salon",
+    "deleteSalon": "Failed to delete salon",
+    "notLoggedIn": "You need to be logged in.",
+    "salonNotFound": "Salon not found",
+    "saveProcedures": "Failed to save procedures"
+  }
+}
