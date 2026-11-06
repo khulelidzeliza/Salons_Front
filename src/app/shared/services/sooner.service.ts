@@ -23,7 +23,6 @@ export class SoonerService {
   public notify(config: ISoonerConfig): void {
     const title = config.title || this.getDefaultTitle(config.type);
     
-    // Using .create() safely triggers the specific notification type
     this.notification.create(config.type, title, config.message, {
       nzClass: `sooner-toast sooner-${config.type}`,
     });

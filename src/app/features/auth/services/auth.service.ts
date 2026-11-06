@@ -2,7 +2,6 @@ import { Injectable, signal, computed, inject } from '@angular/core';
 import { Result } from '../../../core/models/api-result.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { env } from '.././../../../environments/environment';
 import { IChangePasswordRequest, ILoginRequest, IRegisterRequest, IResendCodeRequest, ISendPasswordResetRequest, ITokenResponse, IVerifyEmailRequest } from '../models/auth.models';
 
 @Injectable({ providedIn: 'root' })
