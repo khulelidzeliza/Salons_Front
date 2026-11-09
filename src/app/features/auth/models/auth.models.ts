@@ -39,9 +39,11 @@ export interface IResendCodeRequest {
 export interface ISendPasswordResetRequest {
   email: string;
 }
+/** Body for POST /Auth/change-password */
 export interface IChangePasswordRequest {
-  email: string;
+  token: string;
   newPassword: string;
+  confirmPassword: string;
 }
 
 

@@ -30,10 +30,8 @@ export class ForgetPassword {
 
 export class ResetPassword {
   static readonly type = '[Auth] Change Password';
-
   constructor(public payload: IChangePasswordRequest, public token: string) {}
 }
-
 
 export class LogOut {
   static readonly type = '[Auth] Log Out';

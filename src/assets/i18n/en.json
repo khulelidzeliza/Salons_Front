@@ -208,6 +208,48 @@
       "submit": "Verify code",
       "submitting": "Verifying…",
       "changeEmail": "← Change email"
+    },
+    "reset": {
+      "eyebrow": "Account recovery",
+      "title": "New password",
+      "sub": "Choose a new password for your account.",
+      "subFor": "Choose a new password for",
+      "password": "New password",
+      "passwordPlaceholder": "At least 8 characters",
+      "passwordError": "Use at least 8 characters.",
+      "confirm": "Repeat password",
+      "confirmPlaceholder": "Type it once more",
+      "confirmRequired": "Please repeat your password.",
+      "mismatch": "Passwords do not match.",
+      "match": "Passwords match",
+      "show": "Show",
+      "hide": "Hide",
+      "strength": {
+        "tooShort": "Too short",
+        "weak": "Weak",
+        "okay": "Okay",
+        "good": "Good",
+        "strong": "Strong"
+      },
+      "submit": "Update password",
+      "submitting": "Updating…",
+      "remembered": "Remembered it?",
+      "backToSignIn": "Back to sign in",
+      "done": {
+        "title": "Password updated",
+        "sub": "You’re all set. Sign in with your new password.",
+        "cta": "Sign in"
+      },
+      "expired": {
+        "eyebrow": "Link expired",
+        "title": "This reset link no longer works",
+        "sub": "Reset links last 30 minutes and can be used once. Request a fresh one from the sign-in page.",
+        "subFor": "Reset links last 30 minutes and can be used once. Request a fresh one and we’ll send it to",
+        "resend": "Send a new link",
+        "sending": "Sending…",
+        "sent": "New link sent — check your inbox",
+        "back": "← Back to sign in"
+      }
     }
   },
   "profile": {
@@ -366,7 +408,10 @@
     "verifySuccess": "Your email has been verified successfully",
     "alreadyVerified": "Email is already verified",
     "verifyFailed": "Verification failed. Invalid or expired code.",
-    "logoutSuccess": "You logged out successfully"
+    "logoutSuccess": "You logged out successfully",
+    "passwordChanged": "Your password has been changed successfully",
+    "resetLinkSent": "Password reset link has been sent to your email",
+    "resetFailed": "Something went wrong. Please try again."
   },
   "errors": {
     "createSalon": "Failed to create salon",

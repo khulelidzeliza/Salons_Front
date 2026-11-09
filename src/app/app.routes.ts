@@ -24,7 +24,18 @@ export const routes: Routes = [
       {
         path: 'verify-email',
         loadComponent: () =>
-          import('./features/auth/components/email-verification/email-verification/email-verification.component'),
+          import('./features/auth/components/sign-up-in/email-verification/email-verification.component'),
+      },
+      {
+        path: 'reset-password',
+        loadComponent: () =>
+          import('./features/auth/components/sign-up-in/reset-password/reset-password.component'),
+      },
+      {
+        // Link from the email: /auth/reset-password/<jwt>
+        path: 'reset-password/:token',
+        loadComponent: () =>
+          import('./features/auth/components/sign-up-in/reset-password/reset-password.component'),
       },
     ],
   },

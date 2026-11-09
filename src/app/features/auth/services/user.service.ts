@@ -1,6 +1,6 @@
 import { Injectable,  inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IDeleteRequest, ITokenResponse, IUpdateRequest } from '../models/auth.models';
+import { IUpdateRequest } from '../models/auth.models';
 
 @Injectable({ providedIn: 'root' })
 

@@ -3,12 +3,13 @@ import { inject, Injectable } from '@angular/core';
 import { tap, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
-import { FetchUser, LoginUser, LogOut, RegisterUser, ResendVerificationCode, VerifyEmail } from './user.actions';
+import { FetchUser, LoginUser, LogOut, RegisterUser, ResendVerificationCode, VerifyEmail, ResetPassword, ForgetPassword } from './user.actions';
 import { IUserStore } from './user.model';
-import { AuthTokenService } from '../../shared/services/auth-token.service';
 import { GetUserGQL } from '../../../generated/graphql';
 import { AuthService } from '../../features/auth/services/auth.service';
 import { SoonerService } from '../../shared/services/sooner.service';
+import { AuthTokenService } from '../../shared/services/auth-token.service';
+import { SuccessSooner } from '../../core/services/sooner/sooner.actions';
 
 @State<IUserStore>({
   name: 'user',
@@ -99,7 +100,7 @@ export class UserState {
       }),
       catchError((err) => {
         ctx.patchState({ loading: false, error: err });
-        
+
         if (err.error?.detail?.includes('already verified')) {
           this.sooner.warning('toast.alreadyVerified');
           this.router.navigateByUrl('');
@@ -139,67 +140,72 @@ export class UserState {
     this.sooner.success('toast.logoutSuccess');
     this.router.navigateByUrl('/');
   }
+
+  @Action(ForgetPassword)
+  forgetPassword(ctx: StateContext<IUserStore>, { payload }: ForgetPassword) {
+    ctx.patchState({ loading: true, error: null });
+
+    return this.auth.sendPasswordReset(payload).pipe(
+      tap(() => {
+        ctx.patchState({ loading: false });
+        ctx.dispatch(new SuccessSooner('Password reset link has been sent to your email'));
+      }),
+      catchError((err) => {
+        ctx.patchState({
+          loading: false,
+          error: err?.error?.message ?? 'Could not send reset link.',
+        });
+        return throwError(() => err);
+      })
+    );
+  }
+
 }
 
-  //   @Action(ResendVerificationCode)
-  //   resendVerificationCode(
-  //     ctx: StateContext<IUserStore>,
-  //     { payload }: ResendVerificationCode
-  //   ) {
-  //     ctx.patchState({ loading: true, error: null });
-  //     return this.auth.resendCode(payload).pipe(
-  //       tap(() => {
-  //         ctx.patchState({ loading: false, error: null });
+//   @Action(ResendVerificationCode)
+//   resendVerificationCode(
+//     ctx: StateContext<IUserStore>,
+//     { payload }: ResendVerificationCode
+//   ) {
+//     ctx.patchState({ loading: true, error: null });
+//     return this.auth.resendCode(payload).pipe(
+//       tap(() => {
+//         ctx.patchState({ loading: false, error: null });
 
-  //         this.store.dispatch(
-  //           new SuccessSooner('Verification code has been resent to your email')
-  //         );
-  //       }),
-  //       catchError((err) => {
-  //         ctx.patchState({ loading: false, error: err });
+//         this.store.dispatch(
+//           new SuccessSooner('Verification code has been resent to your email')
+//         );
+//       }),
+//       catchError((err) => {
+//         ctx.patchState({ loading: false, error: err });
 
-  //         if (err.error?.detail.includes('already verified')) {
-  //           this.router.navigateByUrl('');
-  //           localStorage.removeItem('verificationCountdownEnd');
-  //         }
+//         if (err.error?.detail.includes('already verified')) {
+//           this.router.navigateByUrl('');
+//           localStorage.removeItem('verificationCountdownEnd');
+//         }
 
-  //         return throwError(() => err);
-  //       })
-  //     );
-  //   }
+//         return throwError(() => err);
+//       })
+//     );
+//   }
 
-  // @Action(ForgetPassword)
-  // sendPasswordReset(ctx: StateContext<IUserStore>, { payload }: ForgetPassword) {
-  //   ctx.patchState({ loading: true, error: null });
-  //   return this.auth.forgetPassword(payload).pipe(
-  //     tap(() => {
-  //       ctx.patchState({ loading: false, error: null });
 
-  //       this.store.dispatch(new SuccessSooner('Password reset link has been sent to your email'));
-  //     }),
-  //     catchError((err) => {
-  //       ctx.patchState({ loading: false, error: err });
-  //       return throwError(() => err);
-  //     })
-  //   );
-  // }
+// @Action(ResetPassword)
+// changePassword(ctx: StateContext<IUserStore>, { payload, token }: ResetPassword) {
+//   ctx.patchState({ loading: true, error: null });
 
-  // @Action(ResetPassword)
-  // changePassword(ctx: StateContext<IUserStore>, { payload, token }: ResetPassword) {
-  //   ctx.patchState({ loading: true, error: null });
+//   return this.auth.resetPassword(payload, token).pipe(
+//     tap(() => {
+//       ctx.patchState({ loading: false, error: null });
 
-  //   return this.auth.resetPassword(payload, token).pipe(
-  //     tap(() => {
-  //       ctx.patchState({ loading: false, error: null });
+//       this.store.dispatch(new SuccessSooner('Your password has been changed successfully'));
 
-  //       this.store.dispatch(new SuccessSooner('Your password has been changed successfully'));
-
-  //       this.router.navigateByUrl('/auth');
-  //     }),
-  //     catchError((err) => {
-  //       ctx.patchState({ loading: false, error: err });
-  //       return throwError(() => err);
-  //     })
-  //   );
-  // }
+//       this.router.navigateByUrl('/auth');
+//     }),
+//     catchError((err) => {
+//       ctx.patchState({ loading: false, error: err });
+//       return throwError(() => err);
+//     })
+//   );
+// }
 

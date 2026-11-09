@@ -2,7 +2,7 @@ import { Injectable, signal, computed, inject } from '@angular/core';
 import { Result } from '../../../core/models/api-result.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { IChangePasswordRequest, ILoginRequest, IRegisterRequest, IResendCodeRequest, ISendPasswordResetRequest, ITokenResponse, IVerifyEmailRequest } from '../models/auth.models';
+import {IChangePasswordRequest, ILoginRequest, IRegisterRequest, IResendCodeRequest, ISendPasswordResetRequest, ITokenResponse, IVerifyEmailRequest } from '../models/auth.models';
 
 @Injectable({ providedIn: 'root' })
 
@@ -25,11 +25,11 @@ export class AuthService {
   public resendCode(body: IResendCodeRequest): Observable<Result<boolean>> {
     return this.http.post<Result<boolean>>(`${this.base}/resend-code`, body);
   }
-
-  public sendPasswordReset(body: ISendPasswordResetRequest): Observable<Result<boolean>> {
-    return this.http.post<Result<boolean>>(`${this.base}/send-password-reset` , body);
+ public sendPasswordReset(body: ISendPasswordResetRequest): Observable<Result<boolean>> {
+    return this.http.post<Result<boolean>>(`${this.base}/reset-password` , body);
   }
-
-
+    public resetPassword(body: IChangePasswordRequest): Observable<boolean> {
+    return this.http.post<boolean>(`${this.base}/change-password`, body);
+  }
 
 }

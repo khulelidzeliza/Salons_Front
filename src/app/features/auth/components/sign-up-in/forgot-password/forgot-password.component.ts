@@ -1,6 +1,10 @@
 import { TranslatePipe } from '@ngx-translate/core';
 import { Component, inject, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Store } from '@ngxs/store';
+
+import { UserSelectors } from '../../../../../store/user-state/user.selector'; // same path as in register
+import { ForgetPassword } from '../../../../../store/user-state/user.actions';
 
 @Component({
   selector: 'app-forgot-password',
@@ -13,6 +17,9 @@ export default class ForgotPasswordComponent {
   readonly backToLogin = output<void>();
 
   private readonly fb = inject(FormBuilder);
+  private readonly store = inject(Store);
+
+  readonly loading = this.store.selectSignal(UserSelectors.isLoading);
 
   readonly form = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
@@ -30,6 +37,12 @@ export default class ForgotPasswordComponent {
     }
 
     const { email } = this.form.getRawValue();
-    console.log('Reset requested for', email);
+
+    this.store.dispatch(new ForgetPassword({ email })).subscribe({
+      next: () => {
+        this.form.reset();
+        this.backToLogin.emit();
+      },
+    });
   }
 }
