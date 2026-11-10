@@ -11,6 +11,7 @@ import { SoonerService } from '../../shared/services/sooner.service';
 import { AuthTokenService } from '../../shared/services/auth-token.service';
 import { SuccessSooner } from '../../core/services/sooner/sooner.actions';
 import { UserService } from '../../features/auth/services/user.service';
+import { Apollo } from 'apollo-angular';
 
 @State<IUserStore>({
   name: 'user',
@@ -24,6 +25,7 @@ export class UserState {
   private readonly user = inject(UserService);
   private readonly router = inject(Router);
   private readonly sooner = inject(SoonerService);
+  private readonly apollo = inject(Apollo);
 
   ngxsOnInit(ctx: StateContext<IUserStore>) {
     const tokens = this.token.getTokens();
@@ -139,6 +141,8 @@ export class UserState {
     });
 
     this.token.deleteTokens();
+    this.apollo.client.clearStore();
+
     this.sooner.success('toast.logoutSuccess');
     this.router.navigateByUrl('/');
   }
