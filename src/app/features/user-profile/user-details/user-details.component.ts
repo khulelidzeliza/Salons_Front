@@ -5,6 +5,7 @@ import { DatePipe } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LucideAngularModule, User, Mail, Phone, MapPin, Calendar, Shield, Cake } from 'lucide-angular';
 import { UserSelectors } from '../../../store/user-state/user.selector';
+import { UpdateUser } from '../../../store/user-state/user.actions';
 
 
 @Component({
@@ -17,6 +18,7 @@ import { UserSelectors } from '../../../store/user-state/user.selector';
 export default class UserDetailsComponent {
   private readonly fb = inject(FormBuilder);
   private readonly store = inject(Store);
+  readonly loading = this.store.selectSignal(UserSelectors.isLoading);
 
   readonly user = this.store.selectSignal(UserSelectors.getUser);
   readonly editing = signal(false);
@@ -39,28 +41,25 @@ export default class UserDetailsComponent {
 
   readonly form = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
-    email: ['', [Validators.required, Validators.email]],  
+    email: ['', [Validators.required, Validators.email]],
     age: [null as number | null, [Validators.min(1), Validators.max(120)]],
     phoneNumber: [''],
     city: [''],
   });
 
   constructor() {
-    effect(() => {
-      const u = this.user();
-      if (u) {
-        this.form.patchValue(
-          { name: u.userName ?? '', email: u.email ?? '', phoneNumber: u.phoneNumber ?? '' },
-          { emitEvent: false }
-        );
-      }
-      if (this.editing()) {
-        this.form.enable({ emitEvent: false });
-        this.form.get('email')?.disable({ emitEvent: false });
-      } else {
-        this.form.disable({ emitEvent: false });
-      }
-    });
+     effect(() => {
+    const u = this.user();
+    if (u) {
+      this.form.patchValue(this.toFormValue(u), { emitEvent: false });
+    }
+    if (this.editing()) {
+      this.form.enable({ emitEvent: false });
+      this.form.get('email')?.disable({ emitEvent: false });
+    } else {
+      this.form.disable({ emitEvent: false });
+    }
+  });
   }
 
   isInvalid(control: string): boolean {
@@ -70,17 +69,32 @@ export default class UserDetailsComponent {
 
   startEdit(): void { this.editing.set(true); }
 
+  private toFormValue(u: ReturnType<typeof this.user>) {
+    return {
+      name: u?.userName ?? '',
+      email: u?.email ?? '',
+      age: u?.age ?? null,
+      phoneNumber: u?.phoneNumber ?? '',
+      city: u?.city ?? '',
+    };
+  }
   cancel(): void {
     this.editing.set(false);
-    const u = this.user();
-    this.form.reset({ name: u?.userName ?? '', email: u?.email ?? '', phoneNumber: u?.phoneNumber ?? '' ,age: u?.age ?? null, city: u?.city ?? ''}, { emitEvent: false });
+    this.form.reset(this.toFormValue(this.user()), { emitEvent: false });
   }
 
   save(): void {
     if (this.form.invalid) { this.form.markAllAsTouched(); return; }
-    const values = this.form.getRawValue();
-    // this.store.dispatch(new UpdateUser(values));
-    console.log('save →', values);
-    this.editing.set(false);
+
+    const v = this.form.getRawValue();
+
+    this.store.dispatch(new UpdateUser({
+      userName: v.name!,
+      age: v.age ?? undefined,
+      phoneNumber: v.phoneNumber || undefined,
+      city: v.city || undefined,
+    })).subscribe({
+      next: () => this.editing.set(false),
+    });
   }
 }

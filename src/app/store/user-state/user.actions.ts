@@ -1,4 +1,4 @@
-import { IChangePasswordRequest, ILoginRequest, IRegisterRequest, IResendCodeRequest, ISendPasswordResetRequest, IVerifyEmailRequest } from "../../features/auth/models/auth.models";
+import { IChangePasswordRequest, ILoginRequest, IRegisterRequest, IResendCodeRequest, ISendPasswordResetRequest, IUpdateRequest, IVerifyEmailRequest } from "../../features/auth/models/auth.models";
 
 export class FetchUser {
   static readonly type = '[Auth] Fetch User';
@@ -35,4 +35,9 @@ export class ResetPassword {
 
 export class LogOut {
   static readonly type = '[Auth] Log Out';
+}
+
+export class UpdateUser {
+  static readonly type = '[User] Update User';
+  constructor(public payload: IUpdateRequest) {}
 }

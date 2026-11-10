@@ -3,13 +3,14 @@ import { inject, Injectable } from '@angular/core';
 import { tap, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
-import { FetchUser, LoginUser, LogOut, RegisterUser, ResendVerificationCode, VerifyEmail, ResetPassword, ForgetPassword } from './user.actions';
+import { FetchUser, LoginUser, LogOut, RegisterUser, ResendVerificationCode, VerifyEmail, ResetPassword, ForgetPassword, UpdateUser } from './user.actions';
 import { IUserStore } from './user.model';
 import { GetUserGQL } from '../../../generated/graphql';
 import { AuthService } from '../../features/auth/services/auth.service';
 import { SoonerService } from '../../shared/services/sooner.service';
 import { AuthTokenService } from '../../shared/services/auth-token.service';
 import { SuccessSooner } from '../../core/services/sooner/sooner.actions';
+import { UserService } from '../../features/auth/services/user.service';
 
 @State<IUserStore>({
   name: 'user',
@@ -20,6 +21,7 @@ export class UserState {
   private readonly token = inject(AuthTokenService);
   private readonly getUserGql = inject(GetUserGQL);
   private readonly auth = inject(AuthService);
+  private readonly user = inject(UserService);
   private readonly router = inject(Router);
   private readonly sooner = inject(SoonerService);
 
@@ -159,7 +161,28 @@ export class UserState {
       })
     );
   }
+@Action(UpdateUser)
+updateUser(ctx: StateContext<IUserStore>, { payload }: UpdateUser) {
+  ctx.patchState({ loading: true, error: null });
 
+  return this.user.UpdateUser(payload).pipe(
+    tap(() => {
+      const user = ctx.getState().user;
+      ctx.patchState({
+        user: user ? { ...user, ...payload } : user,
+        loading: false,
+      });
+      ctx.dispatch(new SuccessSooner('Profile updated'));
+    }),
+    catchError((err) => {
+      ctx.patchState({
+        loading: false,
+        error: err?.error?.message ?? 'Could not update profile.',
+      });
+      return throwError(() => err);
+    })
+  );
+}
 }
 
 //   @Action(ResendVerificationCode)

@@ -54,6 +54,7 @@ export interface IUpdateRequest {
   city?: string;
 }
 
+
 export interface IDeleteRequest {
   userid: string;
 }
