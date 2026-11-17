@@ -57,6 +57,11 @@
       "message": "Create a free account or sign in to keep your favorite salons in one place.",
       "confirm": "Sign in",
       "cancel": "Not now"
+    },
+    "menu": {
+      "open": "Open menu",
+      "close": "Close menu",
+      "language": "Language"
     }
   },
   "footer": {
@@ -136,6 +141,16 @@
     "actionBar": {
       "call": "✆ Call",
       "instagram": "Message on Instagram"
+    },
+    "owner": {
+      "badge": "Your salon",
+      "editInfo": "Edit info",
+      "addProcedure": "Procedure",
+      "add": "Add",
+      "editType": "Edit {{type}}",
+      "addPhotos": "Add photos",
+      "addPhotosHint": "JPG or PNG",
+      "addMaster": "Add master"
     }
   },
   "auth": {
@@ -420,5 +435,29 @@
     "notLoggedIn": "You need to be logged in.",
     "salonNotFound": "Salon not found",
     "saveProcedures": "Failed to save procedures"
+  },
+  "procedureEditor": {
+    "newEyebrow": "New procedure",
+    "editEyebrow": "Edit procedure",
+    "newTitle": "New procedure",
+    "type": "Type",
+    "added": "Added",
+    "masters": "Masters",
+    "mastersHint": "Press Enter to add · Backspace removes the last one",
+    "works": "Finished works · {{count}}",
+    "coverHint": "The first photo is the cover",
+    "addPhotos": "Add",
+    "cover": "Cover",
+    "new": "New",
+    "removePhoto": "Remove photo",
+    "create": "Add procedure",
+    "delete": "Delete procedure",
+    "deleteQuestion": "Delete this procedure?",
+    "deleteConfirm": "Yes, delete",
+    "deleting": "Deleting…",
+    "deleteFailed": "Couldn't delete the procedure. Please try again.",
+    "created": "Procedure added",
+    "updated": "Procedure updated",
+    "deleted": "Procedure deleted"
   }
 }

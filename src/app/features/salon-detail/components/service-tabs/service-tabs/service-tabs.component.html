@@ -6,4 +6,10 @@
     (click)="categorySelected.emit(category)">
     {{ ('procedure.' + category) | translate }}
   </button>
+
+  @if (canAdd) {
+    <button type="button" class="service-tabs__pill service-tabs__pill--add" (click)="add.emit()">
+      ＋ {{ 'salonDetail.owner.add' | translate }}
+    </button>
+  }
 </div>

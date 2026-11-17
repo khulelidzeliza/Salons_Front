@@ -1,5 +1,5 @@
 import { TranslatePipe } from '@ngx-translate/core';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { env } from '../../../../../../environments/environment';
 
@@ -18,5 +18,8 @@ export interface WorkingResultProcedure {
 })
 export class WorkingResultsComponent {
   @Input({ required: true }) procedures: WorkingResultProcedure[] = [];
+  /** Owner only: shows the dashed "Add photos" tile */
+  @Input() canAdd = false;
+  @Output() add = new EventEmitter<void>();
   serverUrl = env.SERVER_URL;
 }

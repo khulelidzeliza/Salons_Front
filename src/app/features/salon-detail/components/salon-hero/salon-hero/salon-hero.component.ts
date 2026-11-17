@@ -1,5 +1,5 @@
 import { TranslatePipe } from '@ngx-translate/core';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BudgetLevel, GetSalonByIdQuery } from '../../../../../../generated/graphql';
 import { env } from '../../../../../../environments/environment';
@@ -23,6 +23,11 @@ const BUDGET_SIGNS: Record<BudgetLevel, string> = {
 })
 export class SalonHeroComponent {
   @Input({ required: true }) salon!: Salon;
+  /** Owner only: shows the "Your salon · Edit info · + Procedure" strip */
+  @Input() isOwner = false;
+  @Output() editInfo = new EventEmitter<void>();
+  @Output() addProcedure = new EventEmitter<void>();
+
   activeSlide = 0;
   serverUrl = env.SERVER_URL;
 

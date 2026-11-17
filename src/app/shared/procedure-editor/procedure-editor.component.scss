@@ -1,0 +1,132 @@
+// Base modal styles come from add-salon-modal.component.scss
+
+.section { margin-top: 22px; }
+.hint { font-size: var(--fs-xs); color: var(--color-text-muted); }
+
+// ── Type ──
+.type-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  @media (max-width: 760px) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.type-chip {
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 16px;
+  background: var(--color-surface);
+
+  &:disabled {
+    cursor: not-allowed;
+    background: var(--color-surface-soft);
+    border-color: transparent;
+    color: var(--color-text-muted);
+    opacity: .7;
+  }
+
+  &__taken {
+    font: var(--fw-semibold) 9px var(--font-body);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+}
+
+// ── Finished works ──
+.works-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+
+.works {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+  gap: 8px;
+
+  &__add, &__item {
+    position: relative;
+    aspect-ratio: 1;
+    margin: 0;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  &__add {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    border: 1.5px dashed var(--color-border-strong);
+    background: rgba(107, 39, 55, .03);
+    color: var(--color-accent);
+    font: var(--fw-medium) 11px var(--font-body);
+    text-align: center;
+    cursor: pointer;
+    transition: border-color var(--dur-fast) ease, background var(--dur-fast) ease;
+
+    input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+    &:hover, &:focus-within { border-color: var(--color-accent); background: rgba(107, 39, 55, .06); }
+  }
+
+  &__plus { font-size: 20px; line-height: 1; }
+
+  &__item {
+    background: var(--color-surface-soft);
+    img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    &.is-cover { box-shadow: 0 0 0 2px var(--color-accent); }
+  }
+
+  &__cover, &__new {
+    position: absolute;
+    bottom: 6px;
+    padding: 3px 7px;
+    border-radius: 8px;
+    font: var(--fw-semibold) 9px var(--font-body);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  &__cover { left: 6px; background: var(--color-accent); color: var(--color-on-accent); }
+  &__new { right: 6px; background: var(--color-background); color: var(--color-accent); }
+
+  &__remove {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 26px;
+    height: 26px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(42, 30, 28, .55);
+    color: var(--color-on-accent);
+    font-size: 11px;
+    cursor: pointer;
+    transition: background var(--dur-fast) ease;
+    &:hover { background: var(--color-danger); }
+  }
+}
+
+// ── Delete ──
+.danger-zone {
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+
+  &__q { font-size: var(--fs-sm); font-weight: var(--fw-medium); color: var(--color-danger); }
+
+  &__link {
+    height: 44px;
+    padding: 0 6px;
+    border: none;
+    background: none;
+    color: var(--color-danger);
+    font: var(--fw-medium) var(--fs-sm) var(--font-body);
+    cursor: pointer;
+    &:hover { text-decoration: underline; }
+  }
+}
+
+.actions .btn--sm { height: 40px; padding: 0 16px; }
+.btn--danger { background: var(--color-danger); color: var(--color-on-accent); border-color: var(--color-danger); }

@@ -34,3 +34,12 @@
     &.is-active { background: var(--color-accent); color: var(--color-on-accent); }
   }
 }
+
+// Owner-only "+ Add" pill
+.service-tabs__pill--add {
+  height: 44px;
+  margin: 1px 0;
+  border: 1.5px dashed var(--color-border-strong);
+  color: var(--color-accent);
+  &:hover { border-color: var(--color-accent); background: rgba(107, 39, 55, .05); }
+}

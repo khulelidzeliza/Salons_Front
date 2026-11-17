@@ -1,7 +1,18 @@
 <section class="salon-results" *ngIf="procedures.length">
-  <header class="section-header">
-    <p class="section-header__eyebrow">{{ category ? (('procedure.' + category) | translate) : '' }}</p>
-    <h2>{{ 'salonDetail.results.title' | translate }} <em>{{ 'salonDetail.results.titleEm' | translate }}</em></h2>
+  <header class="section-header section-header--row">
+    <div>
+      <p class="section-header__eyebrow">{{ category ? (('procedure.' + category) | translate) : '' }}</p>
+      <h2>{{ 'salonDetail.results.title' | translate }} <em>{{ 'salonDetail.results.titleEm' | translate }}</em></h2>
+    </div>
+    @if (isOwner) {
+      <button type="button" class="owner-btn" (click)="edit.emit()">
+        ✎ {{ 'salonDetail.owner.editType' | translate: { type: (('procedure.' + category) | translate) } }}
+      </button>
+    }
   </header>
-  <app-working-results [procedures]="procedures"></app-working-results>
+  <app-working-results
+    [procedures]="procedures"
+    [canAdd]="isOwner"
+    (add)="edit.emit()">
+  </app-working-results>
 </section>

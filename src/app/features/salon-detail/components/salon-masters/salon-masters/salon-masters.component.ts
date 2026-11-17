@@ -1,5 +1,5 @@
 import { TranslatePipe } from '@ngx-translate/core';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StaffCardComponent } from '../../staff-card/staff-card/staff-card.component';
 
@@ -13,4 +13,6 @@ import { StaffCardComponent } from '../../staff-card/staff-card/staff-card.compo
 export class SalonMastersComponent {
   @Input() category: string | null = null;
   @Input() masters: string[] = [];
+  @Input() isOwner = false;
+  @Output() add = new EventEmitter<void>();
 }

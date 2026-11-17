@@ -173,3 +173,53 @@
 @media (prefers-reduced-motion: reduce) {
   .salon-hero__main-img, .salon-hero__title { animation: none; }
 }
+
+// ── Owner strip (only rendered for the salon's owner) ──
+.salon-hero__owner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  max-width: 100%;
+  margin-bottom: 14px;
+  padding: 6px 6px 6px 14px;
+  border-radius: var(--radius-pill);
+  background: rgba(250, 247, 242, .92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: var(--color-text);
+  animation: rise .5s var(--ease-out) both;
+}
+
+.salon-hero__owner-badge {
+  margin-right: 4px;
+  font: var(--fw-semibold) 10px var(--font-body);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+.salon-hero__owner-btn {
+  height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-text);
+  font: var(--fw-medium) var(--fs-sm) var(--font-body);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background var(--dur-fast) ease, color var(--dur-fast) ease;
+  &:hover { background: var(--color-surface-soft); }
+
+  &--primary {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    &:hover { background: var(--color-accent-hover); }
+  }
+}
+
+.salon-hero__placeholder .salon-hero__owner { border: 1px solid var(--color-border); }

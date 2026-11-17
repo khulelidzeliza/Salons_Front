@@ -6,6 +6,7 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { graphqlProvider } from './core/graphql/apollo.config';
 import { provideStore, Store } from '@ngxs/store';
 import { withNgxsReduxDevtoolsPlugin } from '@ngxs/devtools-plugin';
+import { NZ_CONFIG, NzConfig } from 'ng-zorro-antd/core/config';
 
 import { provideAnimations } from '@angular/platform-browser/animations'; // or provideAnimationsAsync
 import { catchError, of } from 'rxjs';
@@ -22,6 +23,15 @@ import { JsonTranslateLoader } from './core/i18n/json-translate.loader';
 import { AuthTokenService } from './shared/services/auth-token.service';
 import { LanguageService } from './core/i18n/language.service';
 
+const nzConfig: NzConfig = {
+  notification: {
+    nzPlacement: 'bottomRight',
+    nzDuration: 4000,
+    nzMaxStack: 3,
+    nzPauseOnHover: true,
+  },
+};
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimations(),
@@ -32,6 +42,8 @@ export const appConfig: ApplicationConfig = {
       withFetch(),
       withInterceptors([apiInterceptor, errorInterceptor, authInterceptor])
     ),
+    { provide: NZ_CONFIG, useValue: nzConfig },
+
     graphqlProvider,
 
     provideTranslateService({

@@ -12,8 +12,8 @@ import { AsyncPipe } from '@angular/common';
 @Component({
   selector: 'app-salon-page',
   imports: [SalonCardComponent, FilterBarComponent , AsyncPipe],
-  templateUrl: './salon-page.component.html',
-  styleUrl: './salon-page.component.scss'
+  templateUrl: './hero-page.component.html',
+  styleUrls: ['./hero-page.component.scss']
 })
 export default class SalonPageComponent {
 

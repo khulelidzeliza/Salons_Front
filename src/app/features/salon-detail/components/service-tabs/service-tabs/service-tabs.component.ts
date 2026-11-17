@@ -12,5 +12,8 @@ import { CommonModule } from '@angular/common';
 export class ServiceTabsComponent {
   @Input({ required: true }) categories: string[] = [];
   @Input() active: string | null = null;
+  /** Owner only: shows the "+ Add" pill */
+  @Input() canAdd = false;
   @Output() categorySelected = new EventEmitter<string>();
+  @Output() add = new EventEmitter<void>();
 }

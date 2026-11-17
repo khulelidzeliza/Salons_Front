@@ -2,6 +2,8 @@
   <app-service-tabs
     [categories]="categories"
     [active]="active"
-    (categorySelected)="categorySelected.emit($event)">
+    [canAdd]="canAdd"
+    (categorySelected)="categorySelected.emit($event)"
+    (add)="add.emit()">
   </app-service-tabs>
 </nav>

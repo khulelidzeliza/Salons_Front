@@ -20,3 +20,26 @@
     em { font-style: italic; color: var(--color-accent); }
   }
 }
+
+.section-header--row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 14px 24px;
+}
+
+// Owner-only outlined button
+.owner-btn {
+  height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: var(--fw-medium) var(--fs-sm) var(--font-body);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background var(--dur-fast) ease, border-color var(--dur-fast) ease;
+  &:hover { border-color: var(--color-accent); background: var(--color-surface-soft); }
+}

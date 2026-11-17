@@ -1,9 +1,16 @@
-<section class="salon-masters" *ngIf="masters.length">
+<section class="salon-masters" *ngIf="masters.length || (isOwner && category)">
   <header class="section-header">
     <p class="section-header__eyebrow">{{ 'salonDetail.masters.eyebrow' | translate }}</p>
     <h2>{{ category ? (('procedure.' + category) | translate) : ('salonDetail.masters.our' | translate) }} <em>{{ 'salonDetail.masters.titleEm' | translate }}</em></h2>
   </header>
   <div class="salon-masters__grid">
     <app-staff-card *ngFor="let name of masters" [name]="name"></app-staff-card>
+
+    @if (isOwner) {
+      <button type="button" class="salon-masters__add" (click)="add.emit()">
+        <span class="salon-masters__add-icon">＋</span>
+        {{ 'salonDetail.owner.addMaster' | translate }}
+      </button>
+    }
   </div>
 </section>

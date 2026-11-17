@@ -1,12 +1,13 @@
 <article class="card salon-card">
-  <div class="salon-card__image">
-    <span class="salon-card__badge">{{ 'profile.salons.published' | translate }}</span>
-
+  <div class="salon-card__image" >
+    
     @if (salon.pictures.length) {
-      <img
+    <a class="salon-card__image-link" [routerLink]="['/salons', salon.id]">
+    <img
         class="salon-card__photo"
         [src]="serverUrl + salon.pictures![0]"
         [alt]="salon.englishName" />
+    </a>
     }
    @else {
       <svg class="salon-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">

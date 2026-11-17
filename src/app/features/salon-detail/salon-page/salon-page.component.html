@@ -1,26 +1,61 @@
 <ng-container *ngIf="salon$ | async as salon; else loadingTpl">
-  <ng-container *ngIf="{ cats: (categories$ | async) ?? [], active: activeCategory$ | async } as vm">
-    <app-salon-hero [salon]="salon"></app-salon-hero>
+  <ng-container *ngIf="{
+    cats: (categories$ | async) ?? [],
+    active: activeCategory$ | async,
+    procedures: (workingResultProcedures$ | async) ?? [],
+    owner: isOwner(salon)
+  } as vm">
+    <app-salon-hero
+      [salon]="salon"
+      [isOwner]="vm.owner"
+      (editInfo)="editInfoOpen = true"
+      (addProcedure)="openAddProcedure()">
+    </app-salon-hero>
 
     <app-salon-services
       [categories]="vm.cats"
       [active]="vm.active ?? vm.cats[0]"
-      (categorySelected)="onSelectCategory($event)">
+      [canAdd]="vm.owner"
+      (categorySelected)="onSelectCategory($event)"
+      (add)="openAddProcedure()">
     </app-salon-services>
 
     <app-salon-results
       [category]="vm.active ?? vm.cats[0]"
-      [procedures]="(workingResultProcedures$ | async) ?? []">
+      [procedures]="vm.procedures"
+      [isOwner]="vm.owner"
+      (edit)="openEditProcedure(vm.procedures)">
     </app-salon-results>
 
     <app-salon-masters
       [category]="vm.active ?? vm.cats[0]"
-      [masters]="(masters$ | async) ?? []">
-    </app-salon-masters>  
+      [masters]="(masters$ | async) ?? []"
+      [isOwner]="vm.owner"
+      (add)="openEditProcedure(vm.procedures)">
+    </app-salon-masters>
 
     <app-salon-contact [salon]="salon"></app-salon-contact>
 
     <app-salon-action-bar [salon]="salon"></app-salon-action-bar>
+
+    <!-- Owner-only modals: not even created for visitors -->
+    @if (vm.owner) {
+      <app-procedure-editor
+        [open]="editorOpen"
+        [salonId]="salon.id"
+        [salonName]="salon.englishName"
+        [procedure]="editing"
+        [usedTypes]="usedTypes(salon)"
+        (closed)="editorOpen = false"
+        (saved)="onProcedureSaved($event)">
+      </app-procedure-editor>
+
+      <app-edit-salon-modal
+        [open]="editInfoOpen"
+        [salonId]="salon.id"
+        (closed)="onInfoClosed()">
+      </app-edit-salon-modal>
+    }
   </ng-container>
 </ng-container>
 

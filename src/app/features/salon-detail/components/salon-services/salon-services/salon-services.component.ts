@@ -12,5 +12,7 @@ import { ServiceTabsComponent } from '../../service-tabs/service-tabs/service-ta
 export class SalonServicesComponent {
   @Input() categories: string[] = [];
   @Input() active: string | null = null;
+  @Input() canAdd = false;
   @Output() categorySelected = new EventEmitter<string>();
+  @Output() add = new EventEmitter<void>();
 }

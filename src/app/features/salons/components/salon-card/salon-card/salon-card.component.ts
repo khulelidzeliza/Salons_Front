@@ -23,11 +23,9 @@ const BUDGET_SIGNS: Record<BudgetLevel, string> = {
   styleUrl: './salon-card.component.scss'
 })
 export class SalonCardComponent {
-    serverUrl = env.SERVER_URL;
-
-
   @Input({ required: true }) salon!: Salon;
   @Output() toggleFavorite = new EventEmitter<number>();
+  serverUrl = env.SERVER_URL;
 
   get coverImage(): string | null {
     return this.salon.pictures?.[0] ?? null;

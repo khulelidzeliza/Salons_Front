@@ -7,4 +7,12 @@
       <div class="working-results__label">{{ ('procedure.' + procedure.procedureType) | translate }}</div>
     </div>
   </ng-container>
+
+  @if (canAdd) {
+    <button type="button" class="working-results__add" (click)="add.emit()">
+      <span class="working-results__add-icon">＋</span>
+      <strong>{{ 'salonDetail.owner.addPhotos' | translate }}</strong>
+      <small>{{ 'salonDetail.owner.addPhotosHint' | translate }}</small>
+    </button>
+  }
 </div>

@@ -1,7 +1,5 @@
-
 import { Action, State, StateContext } from '@ngxs/store';
 import { inject, Injectable } from '@angular/core';
-
 import { ErrorSooner, ShowSooner, SuccessSooner, WarningSooner } from './sooner.actions';
 import { SoonerService } from '../../../shared/services/sooner.service';
 

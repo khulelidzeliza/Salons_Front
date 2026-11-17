@@ -48,11 +48,11 @@ export class UserState {
           queryParams: { email: payload.email },
         });
       }),
-      catchError((err) => {
-        ctx.patchState({ loading: false, error: err });
-        this.sooner.error('toast.registerFailed');
-        return throwError(() => err);
-      })
+      // catchError((err) => {
+      //   ctx.patchState({ loading: false, error: err });
+      //   this.sooner.error('toast.registerFailed');
+      //   return throwError(() => err);
+      // })
     );
   }
 
@@ -77,10 +77,7 @@ export class UserState {
         }
       }),
       catchError((error) => {
-        ctx.patchState({
-          loading: false,
-          error: error,
-        });
+        ctx.patchState({ loading: false, error });
 
         this.sooner.error('toast.loginFailed');
         return throwError(() => error);
@@ -165,28 +162,28 @@ export class UserState {
       })
     );
   }
-@Action(UpdateUser)
-updateUser(ctx: StateContext<IUserStore>, { payload }: UpdateUser) {
-  ctx.patchState({ loading: true, error: null });
+  @Action(UpdateUser)
+  updateUser(ctx: StateContext<IUserStore>, { payload }: UpdateUser) {
+    ctx.patchState({ loading: true, error: null });
 
-  return this.user.UpdateUser(payload).pipe(
-    tap(() => {
-      const user = ctx.getState().user;
-      ctx.patchState({
-        user: user ? { ...user, ...payload } : user,
-        loading: false,
-      });
-      ctx.dispatch(new SuccessSooner('Profile updated'));
-    }),
-    catchError((err) => {
-      ctx.patchState({
-        loading: false,
-        error: err?.error?.message ?? 'Could not update profile.',
-      });
-      return throwError(() => err);
-    })
-  );
-}
+    return this.user.UpdateUser(payload).pipe(
+      tap(() => {
+        const user = ctx.getState().user;
+        ctx.patchState({
+          user: user ? { ...user, ...payload } : user,
+          loading: false,
+        });
+        ctx.dispatch(new SuccessSooner('Profile updated'));
+      }),
+      catchError((err) => {
+        ctx.patchState({
+          loading: false,
+          error: err?.error?.message ?? 'Could not update profile.',
+        });
+        return throwError(() => err);
+      })
+    );
+  }
 }
 
 //   @Action(ResendVerificationCode)

@@ -12,6 +12,7 @@
         <!-- Gradient overlay with title info -->
         <div class="salon-hero__overlay">
           <div class="salon-hero__overlay-content">
+            <ng-container *ngTemplateOutlet="ownerStrip"></ng-container>
             <p class="salon-hero__eyebrow">
               {{ salon.location }}
               <span *ngIf="salon.AverageRating && salon.AverageRating > 0">
@@ -43,6 +44,7 @@
     } @else {
       <!-- Placeholder -->
       <div class="salon-hero__placeholder">
+        <ng-container *ngTemplateOutlet="ownerStrip"></ng-container>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
           <rect x="4" y="4" width="16" height="16" rx="2" />
           <path d="M8 14l3-3 2 2 4-4" />
@@ -80,3 +82,14 @@
   </div>
 
 </section>
+
+<!-- Owner-only controls (never rendered for visitors) -->
+<ng-template #ownerStrip>
+  @if (isOwner) {
+    <div class="salon-hero__owner">
+      <span class="salon-hero__owner-badge">● {{ 'salonDetail.owner.badge' | translate }}</span>
+      <button type="button" class="salon-hero__owner-btn" (click)="editInfo.emit()">✎ {{ 'salonDetail.owner.editInfo' | translate }}</button>
+      <button type="button" class="salon-hero__owner-btn salon-hero__owner-btn--primary" (click)="addProcedure.emit()">＋ {{ 'salonDetail.owner.addProcedure' | translate }}</button>
+    </div>
+  }
+</ng-template>

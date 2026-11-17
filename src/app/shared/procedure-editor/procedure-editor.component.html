@@ -1,0 +1,126 @@
+@if (open) {
+  <div class="modal-overlay" (click)="close()">
+    <div class="modal-card card" role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
+      <header class="modal-head">
+        <div>
+          <p class="modal-eyebrow">
+            {{ salonName }} · {{ (isEdit ? 'procedureEditor.editEyebrow' : 'procedureEditor.newEyebrow') | translate }}
+          </p>
+          <h2 class="modal-title">
+            {{ type() ? (('procedure.' + type()) | translate) : ('procedureEditor.newTitle' | translate) }}
+          </h2>
+        </div>
+        <button type="button" class="modal-close" (click)="close()" [attr.aria-label]="'common.close' | translate">✕</button>
+      </header>
+
+      <div class="modal-form">
+        <div class="modal-body">
+          <!-- Type -->
+          <div class="field">
+            <label>{{ 'procedureEditor.type' | translate }}</label>
+            <div class="type-grid">
+              @for (t of types; track t.value) {
+                <button
+                  type="button"
+                  class="chip type-chip"
+                  [class.is-active]="type() === t.value"
+                  [disabled]="isTaken(t.value)"
+                  (click)="type.set(t.value)">
+                  {{ t.label | translate }}
+                  @if (isTaken(t.value)) {
+                    <small class="type-chip__taken">{{ 'procedureEditor.added' | translate }}</small>
+                  }
+                </button>
+              }
+            </div>
+          </div>
+
+          <!-- Masters -->
+          <div class="field section">
+            <label for="pe-master">{{ 'procedureEditor.masters' | translate }}</label>
+            <div class="masters">
+              @for (m of masters(); track m) {
+                <span class="master">
+                  {{ m }}
+                  <button type="button" (click)="removeMaster(m)" [attr.aria-label]="'addSalon.procedures.removeMaster' | translate: { name: m }">✕</button>
+                </span>
+              }
+              <input
+                id="pe-master"
+                class="masters__input"
+                [(ngModel)]="masterDraft"
+                (keydown)="onMasterKey($event)"
+                (blur)="addMaster()"
+                [placeholder]="'addSalon.procedures.masterPlaceholder' | translate"
+                autocomplete="off" />
+            </div>
+            <small class="hint">{{ 'procedureEditor.mastersHint' | translate }}</small>
+          </div>
+
+          <!-- Finished works -->
+          <div class="field section">
+            <div class="works-head">
+              <label>{{ 'procedureEditor.works' | translate: { count: photoCount() } }}</label>
+              <small class="hint">{{ 'procedureEditor.coverHint' | translate }}</small>
+            </div>
+            <div class="works">
+              <label class="works__add">
+                <input type="file" accept="image/*" multiple (change)="onFiles($event)" />
+                <span class="works__plus">＋</span>
+                <span>{{ 'procedureEditor.addPhotos' | translate }}</span>
+              </label>
+
+              @for (path of kept(); track path; let i = $index) {
+                <figure class="works__item" [class.is-cover]="i === 0">
+                  <img [src]="serverUrl + path" alt="" />
+                  @if (i === 0) { <span class="works__cover">{{ 'procedureEditor.cover' | translate }}</span> }
+                  <button type="button" class="works__remove" (click)="removeKept(path)" [attr.aria-label]="'procedureEditor.removePhoto' | translate">✕</button>
+                </figure>
+              }
+
+              @for (p of added(); track p.url; let i = $index) {
+                <figure class="works__item" [class.is-cover]="!kept().length && i === 0">
+                  <img [src]="p.url" alt="" />
+                  @if (!kept().length && i === 0) { <span class="works__cover">{{ 'procedureEditor.cover' | translate }}</span> }
+                  <span class="works__new">{{ 'procedureEditor.new' | translate }}</span>
+                  <button type="button" class="works__remove" (click)="removeAdded(i)" [attr.aria-label]="'procedureEditor.removePhoto' | translate">✕</button>
+                </figure>
+              }
+            </div>
+          </div>
+
+          @if (error(); as err) {
+            <p class="err">{{ err | translate }}</p>
+          }
+        </div>
+
+        <footer class="actions">
+          @if (isEdit) {
+            <div class="danger-zone">
+              @if (askingDelete()) {
+                <span class="danger-zone__q">{{ 'procedureEditor.deleteQuestion' | translate }}</span>
+                <button type="button" class="btn btn--danger btn--sm" (click)="remove()" [disabled]="saving()">
+                  {{ (saving() ? 'procedureEditor.deleting' : 'procedureEditor.deleteConfirm') | translate }}
+                </button>
+                <button type="button" class="btn btn--sm" (click)="askingDelete.set(false)" [disabled]="saving()">{{ 'common.keepIt' | translate }}</button>
+              } @else {
+                <button type="button" class="danger-zone__link" (click)="askingDelete.set(true)">{{ 'procedureEditor.delete' | translate }}</button>
+              }
+            </div>
+          }
+
+          @if (!askingDelete()) {
+            <button type="button" class="btn" (click)="close()" [disabled]="saving()">{{ 'common.cancel' | translate }}</button>
+            <button type="button" class="btn btn-primary" (click)="save()" [disabled]="!type() || saving()">
+              @if (saving()) {
+                {{ 'common.saving' | translate }}
+              } @else {
+                {{ (isEdit ? 'common.saveChanges' : 'procedureEditor.create') | translate }}
+              }
+            </button>
+          }
+        </footer>
+      </div>
+    </div>
+  </div>
+}

@@ -46,3 +46,34 @@
 }
 
 @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+// Owner-only dashed tile
+.working-results__add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: var(--radius-xl);
+  border: 1.5px dashed var(--color-border-strong);
+  background: rgba(107, 39, 55, .03);
+  color: var(--color-accent);
+  cursor: pointer;
+  transition: border-color var(--dur-fast) ease, background var(--dur-fast) ease;
+
+  &:hover { border-color: var(--color-accent); background: rgba(107, 39, 55, .06); }
+  strong { font: var(--fw-medium) var(--fs-base) var(--font-body); }
+  small { font-size: var(--fs-xs); color: var(--color-secondary); }
+}
+
+.working-results__add-icon {
+  width: 52px;
+  height: 52px;
+  margin-bottom: 4px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  font-size: 22px;
+}
