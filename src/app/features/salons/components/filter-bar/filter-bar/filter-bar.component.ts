@@ -1,5 +1,5 @@
 import { TranslatePipe } from '@ngx-translate/core';
-import { Component, DestroyRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, inject } from '@angular/core';
+import { AfterViewChecked, Component, DestroyRef, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, ViewChild, inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -23,7 +23,7 @@ export interface CatalogFilters {
   templateUrl: './filter-bar.component.html',
   styleUrl: './filter-bar.component.scss',
 })
-export class FilterBarComponent implements OnInit, OnDestroy {
+export class FilterBarComponent implements OnInit, OnDestroy, AfterViewChecked {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private destroyRef = inject(DestroyRef);
@@ -39,6 +39,32 @@ export class FilterBarComponent implements OnInit, OnDestroy {
   filters: CatalogFilters = { search: '', price: '', category: '', audience: '' };
   sheetOpen = false;
   private search$ = new Subject<string>();
+
+  @ViewChild('chips', { static: true }) chipsRef!: ElementRef<HTMLElement>;
+  @ViewChild('ind', { static: true }) indRef!: ElementRef<HTMLElement>;
+  private lastCategory: string | null = null;
+
+  ngAfterViewChecked(): void {
+    this.moveIndicator();
+  }
+
+  @HostListener('window:resize')
+  onResize(): void {
+    this.lastCategory = null;
+  }
+
+  private moveIndicator(): void {
+    if (this.lastCategory === this.filters.category) return;
+
+    const active = this.chipsRef.nativeElement.querySelector<HTMLElement>('.filters__chip.is-active');
+    if (!active) return;
+    this.lastCategory = this.filters.category;
+
+    const ind = this.indRef.nativeElement;
+    ind.style.width = `${active.offsetWidth}px`;
+    ind.style.height = `${active.offsetHeight}px`;
+    ind.style.transform = `translate(${active.offsetLeft}px, ${active.offsetTop}px)`;
+  }
 
   readonly categoryOptions: { label: string; value: ProcedureType | '' }[] = [
     { label: 'procedure.ALL', value: '' },

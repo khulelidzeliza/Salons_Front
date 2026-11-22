@@ -62,6 +62,7 @@
   }
 
   &__chips {
+    position: relative;
     flex: 1 1 300px;
     min-width: 0;
     display: flex;
@@ -74,7 +75,24 @@
     &::-webkit-scrollbar { display: none; }
   }
 
+  &__indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-radius: var(--radius-pill);
+    background: var(--color-accent);
+    pointer-events: none;
+    z-index: 0;
+    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+                width 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+                height 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
   &__chip {
+    position: relative;
+    z-index: 1;
     flex: none;
     scroll-snap-align: start;
     height: 44px;
@@ -85,10 +103,15 @@
     color: var(--color-text);
     font: var(--fw-medium) var(--fs-sm) var(--font-body);
     cursor: pointer;
-    transition: background var(--dur-base) ease, color var(--dur-base) ease;
+    transition: color 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
 
     &:hover { background: var(--color-surface-soft); }
-    &.is-active { background: var(--color-accent); color: var(--color-on-accent); }
+
+    &.is-active,
+    &.is-active:hover {
+      background: transparent;
+      color: var(--color-on-accent);
+    }
   }
 
   &__more {

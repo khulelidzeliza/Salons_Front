@@ -15,7 +15,8 @@
     }
   </label>
 
-  <div class="filters__chips" role="tablist" [attr.aria-label]="'filters.procedures' | translate">
+  <div class="filters__chips" #chips role="tablist" [attr.aria-label]="'filters.procedures' | translate">
+    <span class="filters__indicator" #ind aria-hidden="true"></span>
     @for (o of categoryOptions; track o.value) {
       <button
         type="button"
