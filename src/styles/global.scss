@@ -442,3 +442,30 @@ a {
   &.sooner-warning .ant-notification-notice-icon-warning { color: var(--color-accent); }
   &.sooner-info    .ant-notification-notice-icon-info    { color: var(--color-secondary); }
 }
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(22px); }
+}
+
+.site-header__bar,
+.hero__title,
+.hero__content app-filter-bar,
+.catalog__head,
+.catalog__grid > app-salon-card {
+  animation: reveal-up .6s var(--ease-out) backwards;
+}
+
+.catalog__grid > app-salon-card {
+  &:nth-child(4n + 2) { animation-delay: 70ms; }
+  &:nth-child(4n + 3) { animation-delay: 140ms; }
+  &:nth-child(4n + 4) { animation-delay: 210ms; }
+}
+
+.hero__content app-filter-bar { animation-delay: .12s; }
+
+.reveal-hold { opacity: 0; }
+.reveal-in { animation: reveal-up .6s var(--ease-out) backwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  @keyframes reveal-up { from { opacity: 0; } }
+}

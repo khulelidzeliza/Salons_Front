@@ -2,13 +2,14 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LucideAngularModule, Instagram, MessageCircle, Music2 } from 'lucide-angular';
+import { RevealDirective } from '../../shared/directives/reveal.directive';
 
 interface FooterLink { label: string; link: string; query?: Record<string, string>; }
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [TranslatePipe, RouterLink, LucideAngularModule],
+  imports: [TranslatePipe, RouterLink, LucideAngularModule, RevealDirective],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })

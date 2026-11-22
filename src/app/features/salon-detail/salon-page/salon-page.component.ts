@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RevealDirective } from '../../../shared/directives/reveal.directive';
 import { ActivatedRoute } from '@angular/router';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { BehaviorSubject, combineLatest } from 'rxjs';
@@ -25,6 +26,7 @@ type SalonProcedure = NonNullable<SalonDetail['procedures']>[number];
   standalone: true,
   imports: [
     CommonModule,
+    RevealDirective,
     SalonHeroComponent,
     SalonServicesComponent,
     SalonResultsComponent,

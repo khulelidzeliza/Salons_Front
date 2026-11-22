@@ -7,10 +7,11 @@ import UserReviewsComponent from "./user-reviews/user-reviews.component";
 import { Store } from '@ngxs/store';
 import { UserRole } from '../../store/user-state/user.model';
 import { UserSelectors } from '../../store/user-state/user.selector';
+import { RevealDirective } from '../../shared/directives/reveal.directive';
 
 @Component({
   selector: 'app-user-profile',
-  imports: [UserInfoComponent, UserDetailsComponent, UserSalonsComponent, UserFavoritesComponent, UserReviewsComponent],
+  imports: [UserInfoComponent, UserDetailsComponent, UserSalonsComponent, UserFavoritesComponent, UserReviewsComponent, RevealDirective],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss'
 })

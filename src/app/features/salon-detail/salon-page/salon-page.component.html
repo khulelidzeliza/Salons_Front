@@ -5,14 +5,14 @@
     procedures: (workingResultProcedures$ | async) ?? [],
     owner: isOwner(salon)
   } as vm">
-    <app-salon-hero
+    <app-salon-hero appReveal
       [salon]="salon"
       [isOwner]="vm.owner"
       (editInfo)="editInfoOpen = true"
       (addProcedure)="openAddProcedure()">
     </app-salon-hero>
 
-    <app-salon-services
+    <app-salon-services appReveal
       [categories]="vm.cats"
       [active]="vm.active ?? vm.cats[0]"
       [canAdd]="vm.owner"
@@ -20,23 +20,23 @@
       (add)="openAddProcedure()">
     </app-salon-services>
 
-    <app-salon-results
+    <app-salon-results appReveal
       [category]="vm.active ?? vm.cats[0]"
       [procedures]="vm.procedures"
       [isOwner]="vm.owner"
       (edit)="openEditProcedure(vm.procedures)">
     </app-salon-results>
 
-    <app-salon-masters
+    <app-salon-masters appReveal
       [category]="vm.active ?? vm.cats[0]"
       [masters]="(masters$ | async) ?? []"
       [isOwner]="vm.owner"
       (add)="openEditProcedure(vm.procedures)">
     </app-salon-masters>
 
-    <app-salon-contact [salon]="salon"></app-salon-contact>
+    <app-salon-contact appReveal [salon]="salon"></app-salon-contact>
 
-    <app-salon-action-bar [salon]="salon"></app-salon-action-bar>
+    <app-salon-action-bar appReveal [salon]="salon"></app-salon-action-bar>
 
     <!-- Owner-only modals: not even created for visitors -->
     @if (vm.owner) {
