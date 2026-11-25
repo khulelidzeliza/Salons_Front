@@ -377,55 +377,56 @@ a {
   @media (max-width: $bp-mobile) { align-items: flex-end; }   // becomes a bottom sheet
 }
 
-// =============================================================
-// Toasts (ng-zorro) — glass, no left border stripe
-// =============================================================
-
-// Mobile: top-center. Inline top/right-ის გადასაფარად !important საჭიროა.
 .ant-notification {
   @media (max-width: $bp-mobile) {
     top: var(--space-md) !important;
     bottom: auto !important;
-    left: 50% !important;
-    right: auto !important;
-    margin: 0 !important;
-    transform: translateX(-50%);
-    width: calc(100vw - 32px);
+    left: 16px !important;
+    right: 16px !important;
+    width: auto;
     max-width: 400px;
+    margin: 0 auto !important;
   }
 }
 
 .ant-notification-notice.sooner-toast {
-  background: var(--glass-light-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  box-sizing: border-box;
+  width: min(384px, calc(100vw - 32px));
+  max-width: none;
+  padding: clamp(12px, 2vw, 20px) clamp(16px, 3vw, 24px);
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: var(--space-md) var(--space-lg);
   box-shadow: var(--shadow-md);
   font-family: var(--font-body);
 
-  @media (max-width: $bp-mobile) {
-    width: 100%;
-    max-width: none;
+  .ant-notification-notice-message,
+  .ant-notification-notice-description {
+    color: var(--color-text);
+    overflow-wrap: anywhere;
   }
 
   .ant-notification-notice-message {
     font-family: var(--font-display);
-    font-size: var(--fs-md);
+    font-size: clamp(15px, 2.5vw, var(--fs-md));
     font-weight: var(--fw-medium);
     line-height: var(--lh-snug);
-    color: var(--color-text);
     margin-bottom: var(--space-xs);
   }
 
   .ant-notification-notice-description {
-    font-size: var(--fs-sm);
+    font-size: clamp(12px, 2vw, var(--fs-sm));
     line-height: var(--lh-normal);
     color: var(--color-text-muted);
   }
 
+  .ant-notification-notice-icon {
+    margin-right: var(--space-sm);
+  }
+
   .ant-notification-notice-close {
+    top: var(--space-xs);
+    right: var(--space-xs);
     color: var(--color-text-muted);
     border-radius: 50%;
     transition: background var(--dur-fast) ease, color var(--dur-fast) ease;
@@ -436,16 +437,27 @@ a {
     }
   }
 
-  // ხატულას ფერი თავის კლასზეა, მშობელზე ფერის დაყენება არ მუშაობს
   &.sooner-success .ant-notification-notice-icon-success { color: var(--color-success); }
-  &.sooner-error   .ant-notification-notice-icon-error   { color: var(--color-danger); }
   &.sooner-warning .ant-notification-notice-icon-warning { color: var(--color-accent); }
-  &.sooner-info    .ant-notification-notice-icon-info    { color: var(--color-secondary); }
+  &.sooner-info .ant-notification-notice-icon-info { color: var(--color-secondary); }
+
+  &.sooner-error {
+    background: linear-gradient(135deg, var(--color-danger-soft), var(--color-surface) 75%);
+    border-color: color-mix(in srgb, var(--color-danger) 30%, var(--color-border));
+    box-shadow: var(--shadow-md), 0 0 0 5px color-mix(in srgb, var(--color-danger) 8%, transparent);
+
+    .ant-notification-notice-icon-error { color: var(--color-danger); }
+  }
+
+  @media (max-width: $bp-mobile) {
+    border-radius: var(--radius-md);
+  }
 }
 
 @keyframes reveal-up {
   from { opacity: 0; transform: translateY(22px); }
 }
+
 
 .site-header__bar,
 .hero__title,

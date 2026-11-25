@@ -21,9 +21,14 @@ export interface ISoonerConfig {
 export class SoonerService {
   private readonly notification = inject(NzNotificationService);
   private readonly translate = inject(TranslateService);
+  private lastError = 0;
 
   public notify(config: ISoonerConfig): void {
-    // title/message may be translation keys (e.g. 'toast.loginSuccess') or plain text
+    if (config.type === SOONER_TYPE.ERROR) {
+      const now = Date.now();
+      if (now - this.lastError < 1000) return;
+      this.lastError = now;
+    }
     const title = this.translate.instant(config.title || this.getDefaultTitle(config.type));
     const message = this.translate.instant(config.message);
     
